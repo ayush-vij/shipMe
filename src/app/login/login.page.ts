@@ -12,7 +12,7 @@ import { exit } from 'process';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
   // form: FormGroup;
   // userDetails: User[]=[];
   // constructor(private http: HttpClient, private AuthService: AuthService, private router: Router) { }
