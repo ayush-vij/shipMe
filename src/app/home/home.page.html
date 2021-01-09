@@ -1,11 +1,15 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title align="center">
-      Welcome page
-    </ion-title>
-  </ion-toolbar>
-</ion-header> -->
+<ion-content class="auth-form ion-padding padding-vertical-6">
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center>
+        <ion-button [routerLink]="['/register']" expand="block" color="primary">Register</ion-button>
 
-<ion-content [fullscreen]="true">
-  Hello!
+        <span class="divider line one-line">or</span>
+
+        <span class="already">Already a user?</span>
+
+        <ion-button [routerLink]="['/login']" expand="block" color="secondary">Sign In</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
