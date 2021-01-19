@@ -13,35 +13,36 @@ import { exit } from 'process';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  // form: FormGroup;
+  form: FormGroup;
   // userDetails: User[]=[];
   // constructor(private http: HttpClient, private AuthService: AuthService, private router: Router) { }
   // ionViewWillEnter(){
   //   this.userDetails = this.loadUser();
   //   console.log(this.userDetails);  
   // }
-  // ngOnInit() {
+  ngOnInit() {
     
+    this.form = new FormGroup({
+      'lemail': new FormControl(null,{
+        updateOn: 'blur',
+        validators: [Validators.required]}),
+      'lpwd': new FormControl(null,{
+        updateOn: 'blur',
+        validators: [Validators.required]}),
+      });
+      this.form.reset();
+    }
+  //   this.http.get('https://inkSell-ayush.firebaseio.com/newUser.json')
   //   this.form = new FormGroup({
-  //     'lemail': new FormControl(null,{
+  //     'email': new FormControl(null,{
   //       updateOn: 'blur',
-  //       validators: [Validators.required]}),
-  //     'lpwd': new FormControl(null,{
+  //       validators: [Validators.required, Validators.email]
+  //     }),
+  //     'pwd': new FormControl(null,{
   //       updateOn: 'blur',
-  //       validators: [Validators.required]}),
-  //     });
-  //     this.form.reset();
-  // //   this.http.get('https://inkSell-ayush.firebaseio.com/newUser.json')
-  // //   this.form = new FormGroup({
-  // //     'email': new FormControl(null,{
-  // //       updateOn: 'blur',
-  // //       validators: [Validators.required, Validators.email]
-  // //     }),
-  // //     'pwd': new FormControl(null,{
-  // //       updateOn: 'blur',
-  // //       validators: [Validators.required, Validators.minLength(8)]
-  // //     }),
-  // //   });
+  //       validators: [Validators.required, Validators.minLength(8)]
+  //     }),
+  //   });
   // //  this.AuthService.checkUser();
   // // this.userDetails = this.AuthService.checkUser();
   // // console.log(this.userDetails);
