@@ -1,9 +1,13 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>choosescreen</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="auth-form ion-padding padding-vertical-1">
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center>
+        <ion-button [routerLink]="['/register']" expand="block" class="b1">Register</ion-button>
 
-<ion-content>
+        <span class="divider line one-line">or</span>
 
+        <ion-button [routerLink]="['/login']" expand="block" class="b2">Sign In</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

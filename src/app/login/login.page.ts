@@ -75,7 +75,7 @@ export class LoginPage {
   checkUser() {
         if(this.IsUserValid(this.form.value.lemail,this.form.value.lpwd)){
           console.log("Logged in!");
-          // this.router.navigate(['/tabs']);
+          this.router.navigate(['/choosescreen']);
         }
         else{
           console.log(this.form.value.lemail);
