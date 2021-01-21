@@ -19,7 +19,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'choosescreen',
+    loadChildren: () => import('./choosescreen/choosescreen.module').then( m => m.ChoosescreenPageModule)
   },
+
 ];
 
 @NgModule({
