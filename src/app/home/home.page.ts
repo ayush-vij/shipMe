@@ -8,6 +8,4 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 })
 export class HomePage {
   constructor(private splashScreen: SplashScreen) { }
-  this.splashScreen.show();
-
-  this.splashScreen.hide();
+}
