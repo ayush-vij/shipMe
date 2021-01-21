@@ -5,8 +5,6 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import { defineCustomElements } from '@teamhive/lottie-player/loader';
 
-import { defineCustomElements } from '@teamhive/lottie-player/loader';
-
 if (environment.production) {
   enableProdMode();
 }
