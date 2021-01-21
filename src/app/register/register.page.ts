@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// import { AuthService } from '../auth.service'
-// import { User } from '../auth.model'
+import { AuthService } from '../auth.service'
+import { User } from '../auth.model'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterPage {
   form: FormGroup;
-  constructor(private router: Router) { }
+  constructor(private AuthService: AuthService, private router: Router) { }
     
   ngOnInit() {
     this.form = new FormGroup({
@@ -34,15 +34,15 @@ export class RegisterPage {
       }),
     });
   }
-  // onNewUser() {
-  //   console.log(this.form);
-  //   this.AuthService.newUser(
-  //     this.form.value.fname,
-  //     this.form.value.lname,
-  //     this.form.value.email,
-  //     this.form.value.pwd,
-  //   );
-  //   this.form.reset();
-  //   this.router.navigate(['/home']);
-  // }
+  onNewUser() {
+    console.log(this.form);
+    this.AuthService.newUser(
+      this.form.value.fname,
+      this.form.value.lname,
+      this.form.value.email,
+      this.form.value.pwd,
+    );
+    this.form.reset();
+    this.router.navigate(['/home']);
+  }
 }
