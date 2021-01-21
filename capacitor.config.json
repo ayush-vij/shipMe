@@ -1,0 +1,26 @@
+{
+  "appId": "ship.sadan.ayush",
+  "appName": "shipMe",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {
+    "preferences": {
+      "SplashScreenDelay": "10000",
+      "ShowSplashScreen": "true",
+      "ScrollEnabled": "false",
+      "BackupWebStorage": "none",
+      "SplashMaintainAspectRatio": "true",
+      "FadeSplashScreenDuration": "300",
+      "FadeSplashScreen": "true",
+      "SplashShowOnlyFirstTime": "false",
+      "SplashScreen": "screen",
+      "AutoHideSplashScreen": "false"
+    }
+  }
+}

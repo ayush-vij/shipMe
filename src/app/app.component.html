@@ -1,3 +1,11 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">
+    <div class="flb">
+      <div class="Aligner-item Aligner-item--top"></div>
+      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+      <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_uhIxIg.json"  background="transparent"  speed="1"  style="width: 355px; height: 355px;"    autoplay></lottie-player>
+      <div class="Aligner-item Aligner-item--bottom"></div>
+    </div>
+  </div>
+  <ion-router-outlet main></ion-router-outlet>
 </ion-app>
