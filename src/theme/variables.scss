@@ -199,6 +199,7 @@
     --ion-text-color: #ffffff;
     --ion-text-color-rgb: 255,255,255;
 
+
     --ion-border-color: #222222;
 
     --ion-color-step-50: #1e1e1e;
@@ -228,5 +229,10 @@
     --ion-tab-bar-background: #1f1f1f;
 
     --ion-card-background: #1e1e1e;
+  }
+  
+  @font-face {
+    font-family: 'segoetitle';
+    src: url('../assets/fonts/segoetitle.ttf');
   }
 }

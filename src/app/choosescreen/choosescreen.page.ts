@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-choosescreen',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChoosescreenPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  commfun(){
+    this.router.navigate(['../choosescreen/feed-commuter']);
+  }
+
+  ordfun(){
+    this.router.navigate(['../choosescreen/feed-orderer']);
   }
 
 }
