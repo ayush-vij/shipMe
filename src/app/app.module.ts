@@ -8,7 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+//import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 import { HttpClientModule } from '@angular/common/http';
 

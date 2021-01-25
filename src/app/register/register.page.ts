@@ -34,6 +34,8 @@ export class RegisterPage {
       }),
     });
   }
+
+  //
   onNewUser() {
     console.log(this.form);
     this.AuthService.newUser(
