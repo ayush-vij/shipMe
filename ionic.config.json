@@ -1,8 +1,7 @@
 {
   "name": "shipMe",
   "integrations": {
-    "cordova": {},
-    "capacitor": {}
+    "cordova": {}
   },
   "type": "angular"
 }
