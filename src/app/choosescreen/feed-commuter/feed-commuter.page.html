@@ -1,9 +1,31 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>feedCommuter</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Requesters</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<super-tabs>
+  <super-tabs-toolbar slot="top" color="dark">
+    <super-tab-button>
+      <ion-icon color="light" name="newspaper-sharp"></ion-icon>
+      <ion-label color="light">Top Requesters</ion-label>
+    </super-tab-button>
+    <super-tab-button>
+      <ion-icon color="light" name="bookmarks-sharp"></ion-icon>
+      <ion-label color="light">Bookmarked</ion-label>
+    </super-tab-button>
+  </super-tabs-toolbar>
 
-</ion-content>
+
+<super-tabs-container>
+  <super-tab>
+    <ion-content>Requests</ion-content>
+  </super-tab>
+  <super-tab>
+    <ion-content>Bookmarked Requests</ion-content>
+  </super-tab>
+</super-tabs-container>
+</super-tabs>

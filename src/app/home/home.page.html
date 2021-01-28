@@ -1,20 +1,14 @@
-<ion-content class="auth-form ion-padding padding-vertical-1">
-  <ion-grid>
-    <ion-row>
-      <ion-col align-self-center>
-        <!-- <img src="../../assets/shipicon.png"> -->
-<div align="center">
+<ion-content class="auth-form ion-padding">
+
+  <div>
         <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-<lottie-player src="https://assets5.lottiefiles.com/packages/lf20_uhIxIg.json"  background="transparent"  speed="1"  style="width: 355px; height: 355px;"    autoplay></lottie-player>
-</div>
-        <ion-button [routerLink]="['/register']" expand="block" color="primary">Register</ion-button>
+        <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_uhIxIg.json"  background="transparent"  speed="1"  style="width: 85vw; height: 70vw; padding-left: 5vw;"    autoplay></lottie-player>
+  </div>
+        <ion-button class="height" [routerLink]="['/register']" expand="block" color="primary"><p class="font-size">Register</p></ion-button>
 
-        <div class="divider line one-line">or</div>
+        <div class="divider line one-line"><p class="font-size">or</p></div>
 
-        <div class="already">Already a user?</div>
+        <div class="already"><p class="font-size">Already a user?</p></div>
 
-        <ion-button [routerLink]="['/login']" expand="block" color="secondary">Sign In</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+        <ion-button class="height" [routerLink]="['/login']" expand="block" color="secondary"><p class="font-size">Sign In</p></ion-button>
 </ion-content>

@@ -1,28 +1,14 @@
-<ion-content class="ion-padding">
-  <ion-grid>
-    <ion-row>
-      <ion-col size-md="8" offset-md="2" class="ion-text-center">
-        <ion-item (click)="commfun()">
-        <ion-card class="ion-activated card1prop">
-          <ion-card-header class="center">
-            <ion-card-title class="card1prop">I'm the commuter</ion-card-title>
-            <ion-card-content class="centercon">
-              I'm travelling from one country to another.
-            </ion-card-content>
-          </ion-card-header>    
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true"> -->
+
+        <ion-card class="ion-activated card1" (click)="commfun()">
+            <p class="title">I'm the commuter</p>
+            <p class="content">I'm travelling from one country <br> to another</p>
         </ion-card>
-      </ion-item>
-      <ion-item (click)="ordfun()">
-        <ion-card class="ion-activated card2prop">
-          <ion-card-header class="center">
-            <ion-card-title class="card2prop">I'm the orderer</ion-card-title>
-            <ion-card-content class="centercon">
-              I want something from another country.
-            </ion-card-content>
-          </ion-card-header>
+        <!-- //////// -->
+        <ion-card class="ion-activated card2" (click)="ordfun()">
+            <p class="title">I'm the orderer</p>
+            <p class="content">I want something from another country<p>
         </ion-card>
-      </ion-item>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-content>
+

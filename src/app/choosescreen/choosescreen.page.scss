@@ -1,31 +1,40 @@
-.center{
-    text-align: center;
-    padding-top: 45%;
-    padding-bottom: 45%;
-}
-
-.centercon{
-    text-align: center;
-    color: black;
-    font-family: segoetitle;
-}
-
-.card1prop{
-    // height: 50%;
+.card1{
+    height: 50%;
+    // width: 100%;
     background-color: #fa6b0b;
     color: black;
     font-family: segoetitle;
     font-size: larger;
 }
 
-.card2prop{
-    // height: 50%;
+.card2{
+    height: 50%;
+    // width: 100%;
     background-color: green;
     color: black;
     font-family: segoetitle;
     font-size: larger;
 }
 
-.blacky{
-    background-color: black;
+.title{
+    text-align: center;
+    font-size: 7vw;
+    padding-top: 20vw;
 }
+
+.content{
+    text-align: center;
+    font-size: 3vw;
+}
+
+// /* Media Queries: Tablet Landscape */
+// @media screen and (max-width: 1060px) {
+//     #primary { width:67%; }
+//     #secondary { width:30%; margin-left:3%;}  
+// }
+
+// /* Media Queries: Tabled Portrait */
+// @media screen and (max-width: 768px) {
+//     #primary { width:100%; }
+//     #secondary { width:100%; margin:0; border:none; }
+// }
