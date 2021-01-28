@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { FeedCommuterPageRoutingModule } from './feed-commuter-routing.module';
 
 import { FeedCommuterPage } from './feed-commuter.page';
+import { SuperTabsModule } from '@ionic-super-tabs/angular';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FeedCommuterPageRoutingModule
+    FeedCommuterPageRoutingModule,
+    SuperTabsModule,
   ],
   declarations: [FeedCommuterPage]
 })

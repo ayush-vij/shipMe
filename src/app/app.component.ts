@@ -34,7 +34,7 @@ export class AppComponent {
       this.splashScreen.hide();
       setTimeout(() => {
         this.splash = false;
-      }, 4000);
+      }, 0);
     });
     // // get current screen orientation
     // console.log(this.screenOrientation.type); // logs the current orientation, example: 'landscape'
