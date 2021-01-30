@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: FeedCommuterPage
+  },
+  {
+    path: 'add-post',
+    loadChildren: () => import('./add-post/add-post.module').then( m => m.AddPostPageModule)
   }
 ];
 
