@@ -1,0 +1,163 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title ion-align-center>Create a post - Commuter</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-radio-group lines="full" formControlName="travelfrom">
+      <ion-list-header>
+        <ion-label>Where are you traveling from?</ion-label>
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>United States</ion-label>
+        <ion-radio slot="start" value="US"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Canada</ion-label>
+        <ion-radio slot="start" value="CA"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>United Kingdom</ion-label>
+        <ion-radio slot="start" value="UK"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>France</ion-label>
+        <ion-radio slot="start" value="FR"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+    <br>
+    <ion-item lines="full">
+      <ion-label position="floating">City traveling from? (with State/Province)</ion-label>
+      <ion-input type="fromcity"  formControlName="travelcity"></ion-input>
+    </ion-item>
+      <br>
+    <ion-radio-group lines="full"  formControlName="travelto">
+      <ion-list-header>
+        <ion-label>Where are you traveling to?</ion-label>
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>United States</ion-label>
+        <ion-radio slot="start" value="US"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Canada</ion-label>
+        <ion-radio slot="start" value="CA"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>United Kingdom</ion-label>
+        <ion-radio slot="start" value="UK"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>France</ion-label>
+        <ion-radio slot="start" value="FR"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+    <br>
+    <ion-item lines="full">
+      <ion-label position="floating">City traveling to? (with State/Province)</ion-label>
+      <ion-input type="tocity" formControlName="traveltocity"></ion-input>
+    </ion-item>
+      <br>
+    <ion-radio-group lines="full" formControlName="booked">
+      <ion-list-header>
+        <ion-label>Have you booked your tickets, yet?</ion-label>
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>Yes</ion-label>
+        <ion-radio slot="start" value="yes" checked></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>No</ion-label>
+        <ion-radio slot="start" value="no"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+    <br>
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+      <br>
+    <ion-item>
+      <ion-label>Travel Date?</ion-label>
+      <ion-datetime displayFormat="DD-MMM-YYYY" formControlName="traveldate"></ion-datetime>
+    </ion-item><br>
+    <!-- BLANK -->
+    <!-- <ion-item lines="full">
+      <ion-label position="floating">Name</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">DOB</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Mobile</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item> -->
+
+    <!-- Radio buttons -->
+    <!-- <ion-radio-group lines="full">
+      <ion-list-header>
+        <ion-label>Gender</ion-label>
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>Male</ion-label>
+        <ion-radio slot="start" value="male" checked></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Female</ion-label>
+        <ion-radio slot="start" value="female"></ion-radio>
+      </ion-item>
+    </ion-radio-group> -->
+
+    <!-- Checkboxes -->
+    <!-- <ion-list lines="full">
+      <ion-list-header>
+        <ion-label>Subjects</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>English</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>Maths</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>Science</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>History</ion-label>
+        <ion-checkbox></ion-checkbox>
+      </ion-item>
+    </ion-list> -->
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
