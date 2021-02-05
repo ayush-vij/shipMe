@@ -14,6 +14,8 @@ import { SuperTabsModule} from "@ionic-super-tabs/angular"
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { DataplayService } from '../app/choosescreen/dataplay.service';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -22,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     ScreenOrientation,
+    DataplayService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
