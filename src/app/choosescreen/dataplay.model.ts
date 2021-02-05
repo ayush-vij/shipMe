@@ -1,4 +1,4 @@
-export class dataplay{
+export class PostData{
   constructor(
       public id: string,
       public custype: string,
@@ -8,6 +8,6 @@ export class dataplay{
       public traveltocity: string,
       public booked: string,
       public email: string,
-      public traveldate: string,
+      public traveldate: Date,
       ){}
 }
