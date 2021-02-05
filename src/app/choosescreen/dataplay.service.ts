@@ -35,7 +35,7 @@ export class DataplayService {
         email,
         traveldate,
       );
-      this.http.post('https://postship-2c320-default-rtdb.firebaseio.com/newPostData.json',
+      this.http.post('https://ship-6ba1e-default-rtdb.firebaseio.com/newPostData.json',
       {...newPostData, id:null}).subscribe(response=>{
         console.log(response);
       });

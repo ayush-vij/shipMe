@@ -32,13 +32,14 @@
         
         <ion-row *ngIf="loadedposts && loadedposts.length > 0">
           <ion-col size-md="6" offset-md="3">
-            <ion-list *ngFor="let reqs of loadedposts; let i=index">
+            <ion-list *ngFor="let post of loadedposts; let i=index">
               <ion-item-sliding>
-                <ion-item detail [routerLink]="['','itemdetails',reqs.id]">
+                <!-- <ion-item detail [routerLink]="['','itemdetails',reqs.id]"> -->
+                  <ion-item>
                   <ion-label>
-                    <h3>{{reqs.name}}</h3>
-                    <p><b>{{reqs.category}}</b></p>
-                    <p>{{reqs.descreq}}</p>
+                    <h3>{{post.email}}</h3>
+                    <p><b>{{post.travelcity}}</b></p>
+                    <p>{{post.traveltocity}}</p>
                   </ion-label>
                 </ion-item>
                 <ion-item-options side="end">
