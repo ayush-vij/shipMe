@@ -33,7 +33,7 @@ export class DataplayService {
       traveltocity,
       booked,
       email,
-      traveldate
+      traveldate,
     );
     this.http
       .post("https://ship-6ba1e-default-rtdb.firebaseio.com/newPostData.json", {
