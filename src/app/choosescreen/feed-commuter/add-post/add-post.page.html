@@ -1,11 +1,26 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title ion-align-center>Create a post - Commuter</ion-title>
+    <ion-title ion-align-center>Create a post</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <form [formGroup]="form">
+    <ion-radio-group lines="full" formControlName="custype">
+      <ion-list-header>
+        <ion-label>Are you a traveller or a requester?</ion-label>
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>Traveller</ion-label>
+        <ion-radio slot="start" name="traveller"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Requester</ion-label>
+        <ion-radio slot="start" name="requester"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
     <ion-radio-group lines="full" formControlName="travelfrom">
       <ion-list-header>
         <ion-label>Where are you traveling from?</ion-label>
@@ -13,28 +28,28 @@
 
       <ion-item>
         <ion-label>United States</ion-label>
-        <ion-radio slot="start" value="US"></ion-radio>
+        <ion-radio slot="start" name="US"></ion-radio>
       </ion-item>
 
       <ion-item>
         <ion-label>Canada</ion-label>
-        <ion-radio slot="start" value="CA"></ion-radio>
+        <ion-radio slot="start" name="CA"></ion-radio>
       </ion-item>
 
       <ion-item>
         <ion-label>United Kingdom</ion-label>
-        <ion-radio slot="start" value="UK"></ion-radio>
+        <ion-radio slot="start" name="UK"></ion-radio>
       </ion-item>
 
       <ion-item>
         <ion-label>France</ion-label>
-        <ion-radio slot="start" value="FR"></ion-radio>
+        <ion-radio slot="start" name="FR"></ion-radio>
       </ion-item>
     </ion-radio-group>
     <br>
     <ion-item lines="full">
       <ion-label position="floating">City traveling from? (with State/Province)</ion-label>
-      <ion-input type="fromcity"  formControlName="travelcity"></ion-input>
+      <ion-input name="fromcity"  formControlName="travelcity"></ion-input>
     </ion-item>
       <br>
     <ion-radio-group lines="full"  formControlName="travelto">
@@ -44,28 +59,28 @@
 
       <ion-item>
         <ion-label>United States</ion-label>
-        <ion-radio slot="start" value="US"></ion-radio>
+        <ion-radio slot="start" name="US"></ion-radio>
       </ion-item>
 
       <ion-item>
         <ion-label>Canada</ion-label>
-        <ion-radio slot="start" value="CA"></ion-radio>
+        <ion-radio slot="start" name="CA"></ion-radio>
       </ion-item>
 
       <ion-item>
         <ion-label>United Kingdom</ion-label>
-        <ion-radio slot="start" value="UK"></ion-radio>
+        <ion-radio slot="start" name="UK"></ion-radio>
       </ion-item>
 
       <ion-item>
         <ion-label>France</ion-label>
-        <ion-radio slot="start" value="FR"></ion-radio>
+        <ion-radio slot="start" name="FR"></ion-radio>
       </ion-item>
     </ion-radio-group>
     <br>
     <ion-item lines="full">
       <ion-label position="floating">City traveling to? (with State/Province)</ion-label>
-      <ion-input type="tocity" formControlName="traveltocity"></ion-input>
+      <ion-input name="tocity" formControlName="traveltocity"></ion-input>
     </ion-item>
       <br>
     <ion-radio-group lines="full" formControlName="booked">
@@ -75,43 +90,72 @@
 
       <ion-item>
         <ion-label>Yes</ion-label>
-        <ion-radio slot="start" value="yes" checked></ion-radio>
+        <ion-radio slot="start" name="yes" checked></ion-radio>
       </ion-item>
 
       <ion-item>
         <ion-label>No</ion-label>
-        <ion-radio slot="start" value="no"></ion-radio>
+        <ion-radio slot="start" name="no"></ion-radio>
       </ion-item>
     </ion-radio-group>
     <br>
     <ion-item lines="full">
       <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" formControlName="email"></ion-input>
+      <ion-input name="email" formControlName="email"></ion-input>
     </ion-item>
       <br>
     <ion-item>
       <ion-label>Travel Date?</ion-label>
-      <ion-datetime displayFormat="DD-MMM-YYYY" formControlName="traveldate"></ion-datetime>
+      <ion-datetime displayFormat="DD-MMM-YYYY" formControlName="traveldate" max="2022-12-31" min="2021-02-05" minmonth="feb"></ion-datetime>
     </ion-item><br>
+    <br><br><br>
+  </form>
+</ion-content>
+    <!-- <ion-row>
+      <ion-col>
+        <ion-button name="submit" color="danger" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row> -->
+
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed" (click)="onNewPost()">
+      <ion-fab-button name="submit">
+        <ion-icon name="checkmark"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- BLANK -->
     <!-- <ion-item lines="full">
       <ion-label position="floating">Name</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input name="text" required></ion-input>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" required></ion-input>
+      <ion-input name="email" required></ion-input>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">DOB</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input name="text" required></ion-input>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">Mobile</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input name="text" required></ion-input>
     </ion-item> -->
 
     <!-- Radio buttons -->
@@ -122,12 +166,12 @@
 
       <ion-item>
         <ion-label>Male</ion-label>
-        <ion-radio slot="start" value="male" checked></ion-radio>
+        <ion-radio slot="start" name="male" checked></ion-radio>
       </ion-item>
 
       <ion-item>
         <ion-label>Female</ion-label>
-        <ion-radio slot="start" value="female"></ion-radio>
+        <ion-radio slot="start" name="female"></ion-radio>
       </ion-item>
     </ion-radio-group> -->
 
@@ -153,11 +197,3 @@
         <ion-checkbox></ion-checkbox>
       </ion-item>
     </ion-list> -->
-
-    <ion-row>
-      <ion-col>
-        <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
-      </ion-col>
-    </ion-row>
-  </form>
-</ion-content>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DataplayService } from '../../dataplay.service'
 
 @Component({
   selector: 'app-add-post',
@@ -9,10 +10,14 @@ import { Router } from '@angular/router';
 })
 export class AddPostPage implements OnInit {
   form: FormGroup;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private dataplayService: DataplayService) { }
 
   ngOnInit() {
     this.form = new FormGroup({
+      'custype': new FormControl(null,{
+        updateOn: 'blur',
+        validators: [Validators.required]
+      }),
       'travelfrom': new FormControl(null,{
         updateOn: 'blur',
         validators: [Validators.required]
@@ -44,4 +49,19 @@ export class AddPostPage implements OnInit {
     });
   }
 
+  onNewPost(){
+    console.log(this.form);
+    this.dataplayService.newPostData(
+      this.form.value.custype,
+      this.form.value.travelfrom,
+      this.form.value.travelcity,
+      this.form.value.travelto,
+      this.form.value.traveltocity,
+      this.form.value.booked,
+      this.form.value.email,
+      this.form.value.traveldate
+    );
+    this.form.reset();
+    this.router.navigate(['/']);
+  }
 }
