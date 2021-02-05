@@ -7,99 +7,59 @@
 <!-- hello -->
 
 <ion-content>
-  <form [formGroup]="form">
-    <ion-radio-group lines="full" formControlName="custype">
-      <ion-list-header>
-        <ion-label>Are you a traveller or a requester?</ion-label>
-      </ion-list-header>
+  <form [formGroup]="form" >
+    <ion-grid>
+      <ion-row>
+        <ion-col>
 
-      <ion-item>
-        <ion-label>Traveller</ion-label>
-        <ion-radio slot="start" name="traveller"></ion-radio>
-      </ion-item>
 
-      <ion-item>
-        <ion-label>Requester</ion-label>
-        <ion-radio slot="start" name="requester"></ion-radio>
-      </ion-item>
-    </ion-radio-group>
-    <ion-radio-group lines="full" formControlName="travelfrom">
-      <ion-list-header>
-        <ion-label>Where are you traveling from?</ion-label>
-      </ion-list-header>
+          <ion-item>
+            <ion-label position="floating">Are you a traveller or a requester?</ion-label>
+            <ion-select formControlName="custype">
+              <ion-select-option name="commuter" value="Commuter">Traveller</ion-select-option>
+              <ion-select-option name="requester" value="Requester">Requester</ion-select-option>
+            </ion-select>
+          </ion-item>
 
-      <ion-item>
-        <ion-label>United States</ion-label>
-        <ion-radio slot="start" name="US"></ion-radio>
-      </ion-item>
 
-      <ion-item>
-        <ion-label>Canada</ion-label>
-        <ion-radio slot="start" name="CA"></ion-radio>
-      </ion-item>
+          <ion-item>
+            <ion-label position="floating">Where are you traveling from?</ion-label>
+            <ion-select formControlName="travelfrom">
+              <ion-select-option name="US" value="United States">United States</ion-select-option>
+              <ion-select-option name="CA" value="Canada">Canada</ion-select-option>
+              <ion-select-option name="UK" value="United Kingdom">United Kingdom</ion-select-option>
+              <ion-select-option name="FR" value="France">France</ion-select-option>
+            </ion-select>
+          </ion-item>
 
-      <ion-item>
-        <ion-label>United Kingdom</ion-label>
-        <ion-radio slot="start" name="UK"></ion-radio>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>France</ion-label>
-        <ion-radio slot="start" name="FR"></ion-radio>
-      </ion-item>
-    </ion-radio-group>
     <br>
     <ion-item lines="full">
       <ion-label position="floating">City traveling from? (with State/Province)</ion-label>
       <ion-input name="fromcity"  formControlName="travelcity"></ion-input>
     </ion-item>
       <br>
-    <ion-radio-group lines="full"  formControlName="travelto">
-      <ion-list-header>
-        <ion-label>Where are you traveling to?</ion-label>
-      </ion-list-header>
-
       <ion-item>
-        <ion-label>United States</ion-label>
-        <ion-radio slot="start" name="US"></ion-radio>
+        <ion-label position="floating">Where are you traveling to?</ion-label>
+        <ion-select formControlName="travelto">
+          <ion-select-option name="US" value="United States">United States</ion-select-option>
+          <ion-select-option name="CA" value="Canada">Canada</ion-select-option>
+          <ion-select-option name="UK" value="United Kingdom">United Kingdom</ion-select-option>
+          <ion-select-option name="FR" value="France">France</ion-select-option>
+        </ion-select>
       </ion-item>
-
-      <ion-item>
-        <ion-label>Canada</ion-label>
-        <ion-radio slot="start" name="CA"></ion-radio>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>United Kingdom</ion-label>
-        <ion-radio slot="start" name="UK"></ion-radio>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>France</ion-label>
-        <ion-radio slot="start" name="FR"></ion-radio>
-      </ion-item>
-    </ion-radio-group>
     <br>
     <ion-item lines="full">
       <ion-label position="floating">City traveling to? (with State/Province)</ion-label>
       <ion-input name="tocity" formControlName="traveltocity"></ion-input>
     </ion-item>
       <br>
-    <ion-radio-group lines="full" formControlName="booked">
-      <ion-list-header>
-        <ion-label>Have you booked your tickets, yet?</ion-label>
-      </ion-list-header>
-
       <ion-item>
-        <ion-label>Yes</ion-label>
-        <ion-radio slot="start" name="yes" checked></ion-radio>
+        <ion-label position="floating">Have you booked your tickets, yet?</ion-label>
+        <ion-select formControlName="booked">
+          <ion-select-option name="yes" value="Yes">Yes</ion-select-option>
+          <ion-select-option name="no" value="No">No</ion-select-option>
+        </ion-select>
       </ion-item>
-
-      <ion-item>
-        <ion-label>No</ion-label>
-        <ion-radio slot="start" name="no"></ion-radio>
-      </ion-item>
-    </ion-radio-group>
     <br>
     <ion-item lines="full">
       <ion-label position="floating">Email</ion-label>
@@ -111,7 +71,10 @@
       <ion-datetime displayFormat="DD-MMM-YYYY" formControlName="traveldate" max="2022-12-31" min="2021-02-05" minmonth="feb"></ion-datetime>
     </ion-item><br>
     <br><br><br>
-  </form>
+    </ion-col>
+    </ion-row>
+    </ion-grid>
+  </form> 
 </ion-content>
     <!-- <ion-row>
       <ion-col>

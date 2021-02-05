@@ -23,16 +23,24 @@
 <super-tabs-container>
   <super-tab>  
     <ion-content class="ion-padding">
+      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="chevron-down-circle-outline"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing...">
+        </ion-refresher-content>
+      </ion-refresher>
       <ion-grid>
-        <ion-row *ngIf="!loadedposts || loadedposts.length <=0">
+        <ion-row *ngIf="!postdata || postdata.length <=0">
           <ion-col size-md="6" offset-md="3" class="ion-text-center">
             <p>Cannot fetch data! Are you connected?</p>
           </ion-col>
         </ion-row>
         
-        <ion-row *ngIf="loadedposts && loadedposts.length > 0">
+        <ion-row *ngIf="postdata && postdata.length > 0">
           <ion-col size-md="6" offset-md="3">
-            <ion-list *ngFor="let post of loadedposts; let i=index">
+            <ion-list *ngFor="let post of postdata; let i=index">
               <ion-item-sliding>
                 <!-- <ion-item detail [routerLink]="['','itemdetails',reqs.id]"> -->
                   <ion-item>
@@ -55,7 +63,24 @@
     </ion-content>
     
 
-
+    <!-- <ion-content class="ion-padding">  
+      <ion-grid>
+        <ion-row>
+          <ion-col size-md='8' offset-md='2'>
+            <ion-list *ngFor='let pd of postdata'>
+              <ion-item>
+                <ion-label>
+                  <h1>
+                  Email: {{pd.email}}<br>
+                  Travelling From: {{pd.travelcity}}<br>
+                  Travelling To: {{pd.traveltocity}}</h1>
+                  
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid> -->
 
 
 

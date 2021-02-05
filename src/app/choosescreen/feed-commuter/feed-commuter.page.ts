@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { ActionSheetController, AlertController } from '@ionic/angular';
 import { Router, RouterLink } from '@angular/router';
 import { DataplayService } from '../dataplay.service';
-import { dataplay } from '../dataplay.model';
+import { PostData } from '../dataplay.model';
 
 @Component({
   selector: 'app-feed-commuter',
@@ -10,16 +10,26 @@ import { dataplay } from '../dataplay.model';
   styleUrls: ['./feed-commuter.page.scss'],
 })
 export class FeedCommuterPage {
-  loadedposts: dataplay[];
-  constructor(private alertController: AlertController, private router: Router, private dataplayService: DataplayService) { }
+  postdata: PostData[];
+  // postdata: any;
+  constructor(
+    private alertController: AlertController, 
+    private router: Router, 
+    private dataplayService: DataplayService,
+    private actionSheetController: ActionSheetController,) { }
+
+    doRefresh(event) {
+      console.log('Begin async operation');
+  
+      setTimeout(() => {
+        console.log('Async operation has ended');
+        event.target.complete();
+      }, 2000);
+    }
 
   ionViewWillEnter() {
-    this.loadedposts = this.dataplayService.posts;
-    console.log(this.loadedposts);
-  }
-  
-
-  ngOnInit() {
+    this.postdata=this.dataplayService.fetchPostData();
+    // console.log(this.postdata);
   }
 
   add(){

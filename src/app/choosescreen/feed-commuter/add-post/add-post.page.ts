@@ -62,6 +62,6 @@ export class AddPostPage implements OnInit {
       this.form.value.traveldate
     );
     this.form.reset();
-    this.router.navigate(['/']);
+    this.router.navigate(['../choosescreen/feed-commuter/']);
   }
 }
