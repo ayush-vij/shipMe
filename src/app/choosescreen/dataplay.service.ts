@@ -12,6 +12,9 @@ export class DataplayService {
   private dataplay: dataplay[]=[];
   constructor(private http: HttpClient) { }
   private _newdata: dataplay[] = [];
+  get posts() {
+    return [...this._newdata];
+  }
   newPostData(
     custype: string,
     travelfrom: string,
@@ -33,7 +36,7 @@ export class DataplayService {
         traveldate,
       );
       this.http.post('https://postship-2c320-default-rtdb.firebaseio.com/newPostData.json',
-      {...dataplay, id:null}).subscribe(response=>{
+      {...newPostData, id:null}).subscribe(response=>{
         console.log(response);
       });
       this._newdata.push(newPostData);
