@@ -3,6 +3,7 @@ import { ActionSheetController, AlertController } from '@ionic/angular';
 import { Router, RouterLink } from '@angular/router';
 import { DataplayService } from '../dataplay.service';
 import { PostData } from '../dataplay.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-feed-commuter',
@@ -16,7 +17,8 @@ export class FeedCommuterPage {
     private alertController: AlertController, 
     private router: Router, 
     private dataplayService: DataplayService,
-    private actionSheetController: ActionSheetController,) { }
+    private actionSheetController: ActionSheetController,
+    private datePipe: DatePipe) { }
 
     doRefresh(event) {
       console.log('Begin async operation');
@@ -24,11 +26,13 @@ export class FeedCommuterPage {
       setTimeout(() => {
         console.log('Async operation has ended');
         event.target.complete();
-      }, 2000);
+      }, 1000);
     }
 
   ionViewWillEnter() {
+    
     this.postdata=this.dataplayService.fetchPostData();
+    this.datePipe.transform(this.postdata.traveldate, 'dd/MM/yyyy')
     // console.log(this.postdata);
   }
 
