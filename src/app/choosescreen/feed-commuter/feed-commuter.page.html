@@ -55,6 +55,13 @@
                   <h5>🛬<ion-chip>{{post.traveltocity}}, {{post.travelto}}</ion-chip></h5>
                   <h5>📅<ion-chip>{{this.datePipe.transform(this.post.traveldate, 'MMM dd, yyyy')}}</ion-chip></h5>
                 </ion-card-content>
+
+                <ion-card>
+                  <ion-card-content>
+                    <h5 class="ion-text-center">Interested!</h5>
+                  </ion-card-content>
+                </ion-card>
+
               </ion-card>
             
               <!-- <ion-item-options side="end">
@@ -64,7 +71,7 @@
                 </ion-item-options>
               </ion-item-sliding> -->
 
-              <ion-card *ngFor="let post of postdata; let i=index">
+              <!-- <ion-card *ngFor="let post of postdata; let i=index">
                 <ion-card-header>
                   <ion-chip>
                     <ion-avatar>
@@ -78,7 +85,13 @@
                   <p>Ayush is travelling from 🛫 <b>{{post.travelcity}}, {{post.travelfrom}}</b> to 🛬 <b>{{post.traveltocity}}, {{post.travelto}}</b> on <b>{{post.traveldate}}</b>. 
                   <h3><ion-chip>{{post.email}}</ion-chip></h3>
                 </ion-card-content>
+              
+              <ion-card>
+                <ion-card-content>
+                  <h5 class="ion-text-center">Interested!</h5>
+                </ion-card-content>
               </ion-card>
+              </ion-card> -->
 
 
           </ion-col>

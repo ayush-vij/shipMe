@@ -32,7 +32,6 @@ export class FeedCommuterPage {
   ionViewWillEnter() {
     
     this.postdata=this.dataplayService.fetchPostData();
-    this.datePipe.transform(this.postdata.traveldate, 'dd/MM/yyyy')
     // console.log(this.postdata);
   }
 
