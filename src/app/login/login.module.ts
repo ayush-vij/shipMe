@@ -8,8 +8,11 @@ import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
+    FormsModule,
     CommonModule,
     ReactiveFormsModule,
     IonicModule,
