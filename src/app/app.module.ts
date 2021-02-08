@@ -17,11 +17,27 @@ import { HttpClientModule } from '@angular/common/http';
 import { DataplayService } from '../app/choosescreen/dataplay.service';
 import { DatePipe } from '@angular/common';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from './auth.service';
+import { environment } from 'src/environments/environment';
+
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), HttpClientModule, AppRoutingModule, SuperTabsModule.forRoot()],
+  imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    FormsModule,
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    HttpClientModule, 
+    AppRoutingModule, 
+    SuperTabsModule.forRoot()],
   providers: [
+    AuthService,
     StatusBar,
     SplashScreen,
     ScreenOrientation,

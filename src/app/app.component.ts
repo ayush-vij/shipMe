@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from "@ionic-native/status-bar/ngx";
 //import { ScreenOrientation } from "@ionic-native/screen-orientation/ngx";
 // import { timer } from "rxjs/observable/timer";
+// import { AuthService } from './service/auth.service';
 
 @Component({
   selector: "app-root",
@@ -19,11 +20,30 @@ export class AppComponent {
   tabBarElement: any;
   splash = true;
 
+  // email: string;
+  // password: string;
+
+  // public appPages = [
+  //   {
+  //     title: 'Home',
+  //     url: '/home',
+  //     icon: 'home'
+  //   },
+  //   {
+  //     title: 'List',
+  //     url: '/list',
+  //     icon: 'list'
+  //   }
+  // ];
+
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     // private screenOrientation: ScreenOrientation
+
+    // public authService: AuthService
   ) {
     this.initializeApp();
   }
@@ -45,4 +65,19 @@ export class AppComponent {
     // // // allow user rotate
     // // this.screenOrientation.lock();
   }
+
+  // signup() {
+  //   this.authService.signup(this.email, this.password);
+  //   this.email = this.password = '';
+  // }
+
+  // login() {
+  //   this.authService.login(this.email, this.password);
+  //   this.email = this.password = '';    
+  // }
+
+  // logout() {
+  //   this.authService.logout();
+  // }
+  
 }
