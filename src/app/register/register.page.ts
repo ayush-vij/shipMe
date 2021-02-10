@@ -68,4 +68,8 @@ export class RegisterPage {
   ionViewWillEnter() {
       this.firebaseAuth.signOut();
   }
+
+  NaviateToLogIn() {
+    this.router.navigate(['../login']); 
+  }
   }

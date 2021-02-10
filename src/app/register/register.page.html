@@ -1,7 +1,6 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Sign Up</ion-title>
   </ion-toolbar>
@@ -36,26 +35,32 @@
 -->
 <ion-app>
   <ion-content padding>
-    <h1 *ngIf="authService.user | async">
+    <!-- <h1 *ngIf="authService.user | async">
       Welcome {{ (authService.user | async)?.email }}!
-    </h1>
+    </h1> -->
 
     <div class="inputs ion-padding" *ngIf="!(authService.user | async)">
-      <ion-input class="email-input" type="text" [(ngModel)]="email" placeholder="Enter email"></ion-input>
-      <ion-input class="pwd-input" type="password" [(ngModel)]="password" placeholder="Enter password"></ion-input>
-
-      <ion-button (click)="signup()" [disabled]="!email || !password">
+      <img class="logo-signup" src="../../assets/images/ShipMe-Logo/ShipMe-logo.png">
+      <div class="inputs">
+        <ion-input class="email-input" type="text" [(ngModel)]="email" placeholder="Enter email"></ion-input>
+        <ion-input class="pwd-input" type="password" [(ngModel)]="password" placeholder="Enter password"></ion-input>
+      </div>
+      <div class="btn-div">
+      <ion-button class="signup-btn" color="success" (click)="signup()" [disabled]="!email || !password">
         Signup
       </ion-button>
-
-      <!-- <ion-button (click)="login()" [disabled]="!email || !password">
-        Login
-      </ion-button> -->
+        <!-- <ion-button  class="login-btn" color="success" (click)="login()" [disabled]="!email || !password">
+         Login
+        </ion-button>-->
+      </div>   
+      <div class="text">
+        <p class="text" (click)="NaviateToLogIn()">Login instead?</p>
+      </div>
     </div>
-    <h4 onload="logsout()" class="ion-padding" *ngIf="authService.user | async">Kindly restart the application to log in again!</h4>
+    <!-- <h4 onload="logsout()" class="ion-padding" *ngIf="authService.user | async">Kindly restart the application to log in again!</h4> 
     <ion-button class="ion-padding" (click)="logsout()" *ngIf="authService.user | async">
       Logout
-    </ion-button>
+    </ion-button>-->
   </ion-content>
   <!-- <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
