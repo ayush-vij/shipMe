@@ -3,17 +3,29 @@ import { variable } from "@angular/compiler/src/output/output_ast";
 import { Injectable } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import { PostData } from "./dataplay.model";
+import { AuthService } from '../auth.service';
+import { User } from '../auth.model';
 
 @Injectable({
   providedIn: "root",
 })
 export class DataplayService {
-  private dataplay: PostData[] = [];
+  private userInfo: User[] = [];
   constructor(private http: HttpClient) {}
   private _postdata: PostData[] = [];
+  private _daata: PostData[]
   get posts() {
     return [...this._postdata];
   }
+  get userdetails() {
+    return [...this.userInfo];
+  }
+
+  saveThis(pst: PostData){
+    this._daata.push(pst);
+  }
+
+  
   newPostData(
     custype: string,
     travelfrom: string,

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "postship-2c320": {
+      "hosting": {
+        "app": [
+          "postship-2c320"
+        ]
+      }
+    }
+  }
+}

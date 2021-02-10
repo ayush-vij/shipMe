@@ -1,21 +1,21 @@
 <ion-header class="ion-no-border purple">
-  <ion-toolbar color="dark">
+  <!-- <ion-toolbar color="dark">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Requesters</ion-title>
-  </ion-toolbar>
+  </ion-toolbar> -->
 </ion-header>
 
 <super-tabs>
   <super-tabs-toolbar slot="top" color="dark">
     <super-tab-button>
       <!-- <ion-icon color="light" name="newspaper-sharp"></ion-icon> -->
-      <ion-label color="light">Top Requesters</ion-label>
+      <ion-label color="light">Feed</ion-label>
     </super-tab-button>
     <super-tab-button>
       <!-- <ion-icon color="light" name="bookmarks-sharp"></ion-icon> -->
-      <ion-label color="light">Bookmarked</ion-label>
+      <ion-label color="light">Saved</ion-label>
     </super-tab-button>
   </super-tabs-toolbar>
 
@@ -40,7 +40,7 @@
         
         <ion-row *ngIf="postdata && postdata.length > 0">
           <ion-col size-md="6" offset-md="3">
-              <ion-card *ngFor="let post of postdata; let i=index">
+              <ion-card *ngFor="let post of postdata; let i=index" detail (click)="onSave(pst)">
                 <ion-card-header>
                   <ion-chip>
                     <ion-avatar>
@@ -97,6 +97,8 @@
           </ion-col>
         </ion-row>
       </ion-grid>
+
+      <button type="submit" (click)="loadUser()">Reg details retrival button</button>
     </ion-content>
     
 
