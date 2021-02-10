@@ -142,4 +142,8 @@ ionViewWillEnter() {
     this.firebaseAuth.signOut();
 }
 
+NaviateToSignUp() {
+  this.router.navigate(['../register']); 
+}
+
 }
