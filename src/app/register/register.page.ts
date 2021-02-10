@@ -1,8 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service'
-import { User } from '../auth.model' //Never read
+import { Component, Injectable, OnInit } from '@angular/core';
+// import { AuthService } from '../auth.service';
+import { User } from '../auth.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { exit } from 'process';
+// // // // // // // // // // 
+import { Platform } from "@ionic/angular";
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from "@ionic-native/status-bar/ngx";
+//import { ScreenOrientation } from "@ionic-native/screen-orientation/ngx";
+// import { timer } from "rxjs/observable/timer";
+import { AuthService } from '../service/auth.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @Component({
@@ -11,40 +21,51 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage {
-  form: FormGroup;
-  constructor(private AuthService: AuthService, private router: Router) { }
-    
-  ngOnInit() {
-    this.form = new FormGroup({
-      'fname': new FormControl(null,{
-        updateOn: 'blur',
-        validators: [Validators.required]
-      }),
-      'lname': new FormControl(null,{
-        updateOn: 'blur',
-        validators: [Validators.required]
-      }),
-      'email': new FormControl(null,{
-        updateOn: 'blur',
-        validators: [Validators.required, Validators.email]
-      }),
-      'pwd': new FormControl(null,{
-        updateOn: 'blur',
-        validators: [Validators.required, Validators.minLength(8)]
-      }),
-    });
-  }
+  // form: FormGroup;
+  tabBarElement: any;
+  splash = true;
+  email: string;
+  password: string;
 
-  //
-  onNewUser() {
-    console.log(this.form);
-    this.AuthService.newUser(
-      this.form.value.fname,
-      this.form.value.lname,
-      this.form.value.email,
-      this.form.value.pwd,
-    );
-    this.form.reset();
-    this.router.navigate(['/home']);
+  public appPages = [
+    {
+      title: 'Home',
+      url: '/home',
+      icon: 'home'
+    },
+    {
+      title: 'List',
+      url: '/list',
+      icon: 'list'
+    }];
+
+  constructor(
+    private firebaseAuth: AngularFireAuth,
+    private http: HttpClient, 
+    private AuthService: AuthService, 
+    private router: Router,
+    private platform: Platform,
+    private splashScreen: SplashScreen,
+    private statusBar: StatusBar,
+    public authService: AuthService
+  ) { }
+    
+  signup() {
+    this.authService.signup(this.email, this.password);
+    this.email = this.password = '';
+    this.router.navigate(['../choosescreen/']); 
   }
-}
+  
+  login() {
+    this.authService.login(this.email, this.password);
+    this.email = this.password = '';   
+    this.router.navigate(['../choosescreen/']); 
+  }
+  logsout() {
+    this.authService.logout();
+  }
+  
+  ionViewWillEnter() {
+      this.firebaseAuth.signOut();
+  }
+  }
