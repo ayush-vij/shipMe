@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title class="ion-text-center">Welcome Boss</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-app>
+  <ion-content padding>
+    
+    <div class="inputs ion-padding" *ngIf="!(authService.user | async)">
+      <img class="logo-login" src="../../assets/images/ShipMe-Logo/ShipMe-logo.png">
+      <div class="inputs">
+        <ion-input class="email-input" type="text" [(ngModel)]="email" placeholder="Enter email"></ion-input>
+        <ion-input class="pwd-input" type="password" [(ngModel)]="password" placeholder="Enter password"></ion-input>
+      </div>
+      <div class="btn-div">
+        <ion-button  class="login-btn" color="success" (click)="login()" [disabled]="!email || !password">
+         Proceed
+        </ion-button>
+      </div>  
+    </div>
+  </ion-content>
+</ion-app>
