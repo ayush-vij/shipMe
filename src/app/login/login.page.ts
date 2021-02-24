@@ -12,6 +12,7 @@ import { StatusBar } from "@ionic-native/status-bar/ngx";
 //import { ScreenOrientation } from "@ionic-native/screen-orientation/ngx";
 // import { timer } from "rxjs/observable/timer";
 import { AuthService } from '../service/auth.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @Component({
@@ -40,6 +41,7 @@ export class LoginPage {
     }];
 
   constructor(
+    private firebaseAuth: AngularFireAuth,
     private http: HttpClient, 
     private AuthService: AuthService, 
     private router: Router,
@@ -136,7 +138,12 @@ logsout() {
   this.authService.logout();
 }
 
-ionViewDidLoad() {
-  this.authService.logout();
+ionViewWillEnter() {
+    this.firebaseAuth.signOut();
 }
+
+NaviateToSignUp() {
+  this.router.navigate(['../register']); 
+}
+
 }

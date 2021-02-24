@@ -1,38 +1,87 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Register</ion-title>
+    <ion-title>Sign Up</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<!-- <ion-content class="ion-padding">
   <form [formGroup]="form">
-    <ion-grid>
-      <ion-row>
-        <ion-col size-md="6" offset-md="3">
-          <ion-item>
-            <ion-label position="floating">First Name</ion-label>
-            <ion-input type="text" autocomplete autocorrect formControlName="fname"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Last Name</ion-label>
-            <ion-input type="text" autocomplete autocorrect formControlName="lname"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Email</ion-label>
-            <ion-input type="Email" autocomplete autocorrect formControlName="email"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Password</ion-label>
-            <ion-input type="password" formControlName="pwd"></ion-input>
-          </ion-item>
-          <ion-button (click)="onNewUser()" [disabled]="!form.valid">
-            <ion-icon name="checkmark" slot="icon-only"></ion-icon>
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    </form>
-</ion-content>
+    
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" formControlName="lemail" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" formControlName="lpwd" required></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button color="secondary" (click)="checkUser()" expand="block">Sign In</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+</ion-content> -->
+  <!-- 
+  file-name: app.component.html
+  The important code for logging-in, signing-up or logging-out are from line no. 08 to 29 
+  — rest you can manage yourself based on user is logging-in or logging-out | 
+    you can any time check user logging-in/out status using *ngIf="!(authService.user | async)"
+-->
+<ion-app>
+  <ion-content padding>
+    <!-- <h1 *ngIf="authService.user | async">
+      Welcome {{ (authService.user | async)?.email }}!
+    </h1> -->
+
+    <div class="inputs ion-padding" *ngIf="!(authService.user | async)">
+      <img class="logo-signup" src="../../assets/images/ShipMe-Logo/ShipMe-logo.png">
+      <div class="inputs">
+        <ion-input class="email-input" type="text" [(ngModel)]="email" placeholder="Enter email"></ion-input>
+        <ion-input class="pwd-input" type="password" [(ngModel)]="password" placeholder="Enter password"></ion-input>
+      </div>
+      <div class="btn-div">
+      <ion-button class="signup-btn" color="success" (click)="signup()" [disabled]="!email || !password">
+        Signup
+      </ion-button>
+        <!-- <ion-button  class="login-btn" color="success" (click)="login()" [disabled]="!email || !password">
+         Login
+        </ion-button>-->
+      </div>   
+      <div class="text">
+        <p class="text" (click)="NaviateToLogIn()">Login instead?</p>
+      </div>
+    </div>
+    <!-- <h4 onload="logsout()" class="ion-padding" *ngIf="authService.user | async">Kindly restart the application to log in again!</h4> 
+    <ion-button class="ion-padding" (click)="logsout()" *ngIf="authService.user | async">
+      Logout
+    </ion-button>-->
+  </ion-content>
+  <!-- <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane> -->
+</ion-app>
