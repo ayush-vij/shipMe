@@ -59,7 +59,7 @@ export class DataplayService {
     this._postdata.push(newPostData);
     // console.log(this._postdata);
   }
-
+//comment
   fetchPostData() {
     var postdata: PostData[] = [];
     this.http
