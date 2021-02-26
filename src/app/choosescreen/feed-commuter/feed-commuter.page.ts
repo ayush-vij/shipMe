@@ -56,8 +56,8 @@ export class FeedCommuterPage {
           {
             text: 'Confirm',
             handler: () => {
-              console.log("Item:" +pst);
               this.dataplayService.saveThis(pst);
+              console.log("Item:" +this.dataplayService.saveThis(pst));
               this.presentToast();
               // console.log("Kya hai yeh? " +this.dataService.addItemToCart(item));
             },

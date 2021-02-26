@@ -13,7 +13,7 @@ export class DataplayService {
   private userInfo: User[] = [];
   constructor(private http: HttpClient) {}
   private _postdata: PostData[] = [];
-  private _daata: PostData[]
+  private _daata: PostData[] = [];
   get posts() {
     return [...this._postdata];
   }
@@ -22,6 +22,7 @@ export class DataplayService {
   }
 
   saveThis(pst: PostData){
+    this._daata.push(pst);
     this._daata.push(pst);
   }
 
@@ -48,7 +49,7 @@ export class DataplayService {
       traveldate,
     );
     this.http
-      .post("https://ship-6ba1e-default-rtdb.firebaseio.com/newPostData.json", {
+      .post("https://postship-2c320-default-rtdb.firebaseio.com/newPostData.json", {
         ...newPostData,
         id: null,
       })
@@ -62,7 +63,7 @@ export class DataplayService {
   fetchPostData() {
     var postdata: PostData[] = [];
     this.http
-      .get("https://ship-6ba1e-default-rtdb.firebaseio.com/newPostData.json")
+      .get("https://postship-2c320-default-rtdb.firebaseio.com/newPostData.json")
       .subscribe((response) => {
         for (const key in response) {
           postdata.push(
@@ -91,7 +92,7 @@ export class DataplayService {
   removePostData(id: string) {
     this.http
       .delete(
-        `https://ship-6ba1e-default-rtdb.firebaseio.com/newPostData/${id}.json`
+        `https://postship-2c320-default-rtdb.firebaseio.com/newPostData/${id}.json`
       )
       .subscribe((response) => {
         console.log(response);
