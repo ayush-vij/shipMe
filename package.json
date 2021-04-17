@@ -23,12 +23,14 @@
     "@capacitor/android": "^2.4.6",
     "@capacitor/core": "2.4.6",
     "@ionic-native/core": "^5.0.0",
+    "@ionic-native/firebase": "^5.31.1",
     "@ionic-native/lottie-splash-screen": "^5.30.0",
     "@ionic-native/splash-screen": "^5.30.0",
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic-super-tabs/angular": "^7.0.8",
     "@ionic/angular": "^5.0.0",
     "@teamhive/lottie-player": "^1.0.0",
+    "angularfire2": "^5.0.0-rc.12-next",
     "firebase": "^7.24.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
@@ -46,6 +48,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
+    "cordova-plugin-firebase": "^2.0.5",
     "cordova-plugin-inappbrowser": "^4.1.0",
     "cordova-plugin-lottie-splashscreen": "^0.9.2",
     "cordova-plugin-splashscreen": "^5.0.2",
@@ -61,13 +64,20 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.9.5"
+    "typescript": "~3.9.5",
+    "@angular-devkit/architect": ">= 0.900 < 0.1200",
+    "firebase-tools": "^8.0.0",
+    "fuzzy": "^0.1.3",
+    "inquirer": "^6.2.2",
+    "inquirer-autocomplete-prompt": "^1.0.1",
+    "open": "^7.0.3"
   },
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-lottie-splashscreen": {}
+      "cordova-plugin-lottie-splashscreen": {},
+      "cordova-plugin-firebase": {}
     }
   }
 }

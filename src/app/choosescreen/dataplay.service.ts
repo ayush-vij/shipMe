@@ -3,17 +3,30 @@ import { variable } from "@angular/compiler/src/output/output_ast";
 import { Injectable } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import { PostData } from "./dataplay.model";
+import { AuthService } from '../auth.service';
+import { User } from '../auth.model';
 
 @Injectable({
   providedIn: "root",
 })
 export class DataplayService {
-  private dataplay: PostData[] = [];
+  private userInfo: User[] = [];
   constructor(private http: HttpClient) {}
   private _postdata: PostData[] = [];
+  private _daata: PostData[] = [];
   get posts() {
     return [...this._postdata];
   }
+  get userdetails() {
+    return [...this.userInfo];
+  }
+
+  saveThis(pst: PostData){
+    this._daata.push(pst);
+    this._daata.push(pst);
+  }
+
+  
   newPostData(
     custype: string,
     travelfrom: string,
@@ -36,7 +49,7 @@ export class DataplayService {
       traveldate,
     );
     this.http
-      .post("https://ship-6ba1e-default-rtdb.firebaseio.com/newPostData.json", {
+      .post("https://postship-2c320-default-rtdb.firebaseio.com/newPostData.json", {
         ...newPostData,
         id: null,
       })
@@ -46,11 +59,11 @@ export class DataplayService {
     this._postdata.push(newPostData);
     // console.log(this._postdata);
   }
-
+//comment
   fetchPostData() {
     var postdata: PostData[] = [];
     this.http
-      .get("https://ship-6ba1e-default-rtdb.firebaseio.com/newPostData.json")
+      .get("https://postship-2c320-default-rtdb.firebaseio.com/newPostData.json")
       .subscribe((response) => {
         for (const key in response) {
           postdata.push(
@@ -79,7 +92,7 @@ export class DataplayService {
   removePostData(id: string) {
     this.http
       .delete(
-        `https://ship-6ba1e-default-rtdb.firebaseio.com/newPostData/${id}.json`
+        `https://postship-2c320-default-rtdb.firebaseio.com/newPostData/${id}.json`
       )
       .subscribe((response) => {
         console.log(response);
