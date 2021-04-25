@@ -53,13 +53,11 @@ export class RegisterPage {
   signup() {
     this.authService.signup(this.email, this.password);
     this.email = this.password = '';
-    this.router.navigate(['../choosescreen/']); 
   }
   
   login() {
     this.authService.login(this.email, this.password);
     this.email = this.password = '';   
-    this.router.navigate(['../choosescreen/']); 
   }
   logsout() {
     this.authService.logout();

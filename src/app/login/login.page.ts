@@ -131,8 +131,7 @@ signup() {
 
 login() {
   this.authService.login(this.email, this.password);
-  this.email = this.password = '';   
-  this.router.navigate(['../choosescreen/']);
+  this.email = this.password = '';  
 }
 logsout() {
   this.authService.logout();
