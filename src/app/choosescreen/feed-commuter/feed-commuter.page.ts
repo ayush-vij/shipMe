@@ -31,10 +31,10 @@ export class FeedCommuterPage {
     private toastController: ToastController) { }
 
     doRefresh(event) {
-      console.log('Begin async operation');
+      console.log('Refreshing..');
   
       setTimeout(() => {
-        console.log('Async operation has ended');
+        console.log('Refreshed! Data has been updated!');
         event.target.complete();
       }, 1000);
     }
