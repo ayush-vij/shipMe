@@ -35,7 +35,15 @@ const routes: Routes = [
   {
     path: 'admin-login',
     loadChildren: () => import('./admin-login/admin-login.module').then( m => m.AdminLoginPageModule)
+  },  {
+    path: 'contact',
+    loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule)
   },
+  {
+    path: 'payprocess',
+    loadChildren: () => import('./payprocess/payprocess.module').then( m => m.PayprocessPageModule)
+  },
+
 
 ];
 
