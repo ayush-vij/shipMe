@@ -1,13 +1,12 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Log In</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<!-- <ion-content class="ion-padding">
   <form [formGroup]="form">
     
     <ion-item>
@@ -27,4 +26,65 @@
     </ion-row>
 
   </form>
-</ion-content>
+</ion-content> -->
+  <!-- 
+  file-name: app.component.html
+  The important code for logging-in, signing-up or logging-out are from line no. 08 to 29 
+  — rest you can manage yourself based on user is logging-in or logging-out | 
+    you can any time check user logging-in/out status using *ngIf="!(authService.user | async)"
+-->
+<ion-app>
+  <ion-content padding>
+    <!-- <h1 *ngIf="authService.user | async">
+      Welcome {{ (authService.user | async)?.email }}!
+    </h1> -->
+
+    <div class="inputs ion-padding" *ngIf="!(authService.user | async)">
+      <img class="logo-login" src="../../assets/images/ShipMe-Logo/ShipMe-logo.png">
+      <div class="inputs">
+        <ion-input class="email-input" type="text" [(ngModel)]="email" placeholder="Enter email"></ion-input>
+        <ion-input class="pwd-input" type="password" [(ngModel)]="password" placeholder="Enter password"></ion-input>
+      </div>
+      <!-- <ion-button (click)="signup()" [disabled]="!email || !password">
+        Signup
+      </ion-button> -->
+      <div class="btn-div">
+        <ion-button  class="login-btn" color="success" (click)="login()" [disabled]="!email || !password">
+         Login
+        </ion-button>
+      </div> 
+      <div class="message">
+        <p class="message" id="demo"></p>
+      </div> 
+      <div class="text">
+        <p class="text" (click)="NaviateToSignUp()">Sign Up instead?</p>
+      </div>
+    </div>
+    <!-- <h4 onload="logsout()" class="ion-padding" *ngIf="authService.user | async">Kindly restart the application to log in again!</h4> 
+    <ion-button class="ion-padding" (click)="logsout()" *ngIf="authService.user | async">
+      Logout
+    </ion-button>-->
+  </ion-content>
+  <!-- <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane> -->
+</ion-app>

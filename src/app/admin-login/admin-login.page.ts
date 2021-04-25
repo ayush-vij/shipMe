@@ -16,12 +16,13 @@ import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.page.html',
-  styleUrls: ['./register.page.scss'],
+  selector: 'app-admin-login',
+  templateUrl: './admin-login.page.html',
+  styleUrls: ['./admin-login.page.scss'],
 })
-export class RegisterPage {
-  // form: FormGroup;
+export class AdminLoginPage{
+// form: FormGroup;
+  // userDetails: User[]=[];
   tabBarElement: any;
   splash = true;
   email: string;
@@ -47,27 +48,28 @@ export class RegisterPage {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public authService: AuthService
-  ) { }
+    public authService: AuthService) { }
     
-  signup() {
-    this.authService.signup(this.email, this.password);
-    this.email = this.password = '';
-  }
-  
-  login() {
-    this.authService.login(this.email, this.password);
-    this.email = this.password = '';   
-  }
-  logsout() {
-    this.authService.logout();
-  }
-  
-  ionViewWillEnter() {
-      this.firebaseAuth.signOut();
-  }
+signup() {
+  this.authService.signup(this.email, this.password);
+  this.email = this.password = '';
+}
 
-  NaviateToLogIn() {
-    this.router.navigate(['../login']); 
-  }
-  }
+login() {
+  this.authService.login(this.email, this.password);
+  this.email = this.password = '';   
+  this.router.navigate(['../choosescreen/']); 
+}
+logsout() {
+  this.authService.logout();
+}
+
+ionViewWillEnter() {
+    this.firebaseAuth.signOut();
+}
+
+NaviateToSignUp() {
+  this.router.navigate(['../register']); 
+}
+
+}
