@@ -4,7 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { DataplayService } from '../dataplay.service';
 import { PostData } from '../dataplay.model';
 import { DatePipe } from '@angular/common';
-import { AuthService } from '../../dauth.service';
+import { DAuthService } from '../../dauth.service';
 import { User } from '../../dauth.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -26,7 +26,7 @@ export class FeedCommuterPage {
     private dataplayService: DataplayService,
     private actionSheetController: ActionSheetController,
     private datePipe: DatePipe,
-    private authService: AuthService,
+    private authService: DAuthService,
     private http: HttpClient,
     private toastController: ToastController) { }
 
