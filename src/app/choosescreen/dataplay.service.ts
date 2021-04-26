@@ -3,8 +3,8 @@ import { variable } from "@angular/compiler/src/output/output_ast";
 import { Injectable } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import { PostData } from "./dataplay.model";
-import { AuthService } from '../auth.service';
-import { User } from '../auth.model';
+import { DAuthService } from '../dauth.service';
+import { User } from '../dauth.model';
 
 @Injectable({
   providedIn: "root",

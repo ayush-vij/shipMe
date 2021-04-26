@@ -95,7 +95,6 @@ export class FeedCommuterPage {
             new User(
               key,
               response[key].fname,
-              response[key].lname,
               response[key].email,
               response[key].pwd,
             )
