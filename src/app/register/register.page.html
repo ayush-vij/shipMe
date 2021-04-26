@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="start">
     </ion-buttons>
-    <ion-title>Sign Up</ion-title>
+    <center><ion-title>Sign Up</ion-title></center>
   </ion-toolbar>
 </ion-header>
 
@@ -42,11 +42,14 @@
     <div class="inputs ion-padding" *ngIf="!(authService.user | async)">
       <img class="logo-signup" src="../../assets/images/ShipMe-Logo/ShipMe-logo.png">
       <div class="inputs">
+        <ion-input class="img-input" type="file" [(ngModel)]="pp" placeholder="Profile photo?"><strong>Profile photo?</strong></ion-input>
+        <ion-input class="name-input" type="text" [(ngModel)]="fname" placeholder="Enter full name"></ion-input>
         <ion-input class="email-input" type="text" [(ngModel)]="email" placeholder="Enter email"></ion-input>
         <ion-input class="pwd-input" type="password" [(ngModel)]="password" placeholder="Enter password"></ion-input>
+        <ion-input class="rpwd-input" type="password" [(ngModel)]="repassword" placeholder="Reenter password"></ion-input>
       </div>
       <div class="btn-div">
-      <ion-button class="signup-btn" color="success" (click)="signup()" [disabled]="!email || !password">
+      <ion-button class="signup-btn" color="success" (click)="pwcheck()" [disabled]="!fname || !email || !password || !repassword">
         Signup
       </ion-button>
       <div class="message">

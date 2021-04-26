@@ -4,8 +4,8 @@ import { Router, RouterLink } from '@angular/router';
 import { DataplayService } from '../dataplay.service';
 import { PostData } from '../dataplay.model';
 import { DatePipe } from '@angular/common';
-import { AuthService } from '../../auth.service';
-import { User } from '../../auth.model';
+import { DAuthService } from '../../dauth.service';
+import { User } from '../../dauth.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
@@ -26,15 +26,15 @@ export class FeedCommuterPage {
     private dataplayService: DataplayService,
     private actionSheetController: ActionSheetController,
     private datePipe: DatePipe,
-    private authService: AuthService,
+    private authService: DAuthService,
     private http: HttpClient,
     private toastController: ToastController) { }
 
     doRefresh(event) {
-      console.log('Begin async operation');
+      console.log('Refreshing..');
   
       setTimeout(() => {
-        console.log('Async operation has ended');
+        console.log('Refreshed! Data has been updated!');
         event.target.complete();
       }, 1000);
     }
@@ -95,7 +95,6 @@ export class FeedCommuterPage {
             new User(
               key,
               response[key].fname,
-              response[key].lname,
               response[key].email,
               response[key].pwd,
             )

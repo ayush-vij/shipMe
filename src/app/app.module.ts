@@ -20,7 +20,7 @@ import { DatePipe } from '@angular/common';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from './auth.service';
+import { DAuthService } from './dauth.service';
 import { environment } from 'src/environments/environment';
 
 
@@ -37,7 +37,7 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule, 
     SuperTabsModule.forRoot()],
   providers: [
-    AuthService,
+    DAuthService,
     StatusBar,
     SplashScreen,
     ScreenOrientation,
