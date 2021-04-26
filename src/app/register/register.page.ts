@@ -16,6 +16,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 
 import { ToastController } from '@ionic/angular';
 
+// import { Camera, CameraOptions } from '@ionic-native/core/decorators/cordova';
+import { CameraOptions, CameraSource } from '@capacitor/core';
 
 @Component({
   selector: 'app-register',
@@ -26,6 +28,7 @@ export class RegisterPage {
   // form: FormGroup;
   tabBarElement: any;
   splash = true;
+  pp: ImageBitmap;
   fname: string;
   email: string;
   password: string;
@@ -52,8 +55,26 @@ export class RegisterPage {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public authService: AuthService,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private camera: Camera,
   ) { }
+
+  const options: CameraOptions = {
+    quality: 100,
+    destinationType: this.camera.DestinationType.FILE_URI,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE
+  }
+  
+  this.camera.getPicture(options).then((imageData) => {
+   // imageData is either a base64 encoded string or a file URI
+   // If it's base64 (DATA_URL):
+   let base64Image = 'data:image/jpeg;base64,' + imageData;
+  }, (err) => {
+   // Handle error
+  });
+
+  /////////////////////////////////
 
   pwcheck(){
     if (this.password == this.repassword){
@@ -64,6 +85,8 @@ export class RegisterPage {
       this.pwerror();
     }
   }
+
+  
     
   signup() {
     //this.authService.signup(this.fname, this.email, this.password, this.repassword);

@@ -14,6 +14,7 @@ export class DataplayService {
   constructor(private http: HttpClient) {}
   private _postdata: PostData[] = [];
   private _daata: PostData[] = [];
+
   get posts() {
     return [...this._postdata];
   }
@@ -58,6 +59,10 @@ export class DataplayService {
       });
     this._postdata.push(newPostData);
     // console.log(this._postdata);
+  }
+
+  postCredzToDB(){
+    var credzData: any;
   }
 //comment
   fetchPostData() {
