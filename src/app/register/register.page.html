@@ -67,6 +67,30 @@
     <ion-button class="ion-padding" (click)="logsout()" *ngIf="authService.user | async">
       Logout
     </ion-button>-->
+    <div>
+    <ion-card class="ion-text-center" *ngIf="!isUploading && !isUploaded">
+      <ion-card-header>
+        <ion-card-title>Choose Images to Upload</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button color="primary" size="medium">
+          <input type="file" (change)="uploadImage($event.target.files)" />
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- File upload progress bar -->
+    <div *ngIf="percentageVal | async as percentage">
+      Progress: {{ percentage | number }}%
+      <ion-progress-bar value="{{ percentage / 100 }}"></ion-progress-bar>
+    </div>
+
+    <div *ngIf="trackSnapshot | async as snap">
+      File size: {{ snap.totalBytes | formatFileSize }} 
+      
+      Data transfered: {{ snap.bytesTransferred | formatFileSize }}
+    </div>    
+  </div>
   </ion-content>
   <!-- <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">

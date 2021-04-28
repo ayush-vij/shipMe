@@ -11,6 +11,7 @@ export const environment = {
     projectId: "postship-2c320",
     storageBucket: "postship-2c320.appspot.com",
     messagingSenderId: "616220357262",
+    appId: "1:616220357262:web:d6c1e4eb8159903afa0fdf",
   }
 };
 
