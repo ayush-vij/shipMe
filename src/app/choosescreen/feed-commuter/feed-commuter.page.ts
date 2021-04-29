@@ -87,7 +87,30 @@ export class FeedCommuterPage {
 
   loadUser(){
     var newVar: User[]=[];
-    this.http.get('https://ship-6ba1e-default-rtdb.firebaseio.com/newUser.json')
+    var newData: PostData[]=[];
+    this.http.get('https://postship-2c320-default-rtdb.firebaseio.com/newPostData.json')
+    .subscribe(
+      response => {
+        for (const key in response){
+          newData.push(
+            new PostData(
+              key,
+              response[key].fname,
+              response[key].booked,
+              response[key].custype,
+              response[key].email,
+              response[key].travelcity,
+              response[key].traveldate,
+              response[key].travelfrom,
+              response[key].travelto,
+              response[key].traveltocity,
+            )
+          );
+        }
+        
+      }
+    );
+    this.http.get('https://postship-2c320-default-rtdb.firebaseio.com/newUser.json')
     .subscribe(
       response => {
         for (const key in response){
@@ -99,13 +122,15 @@ export class FeedCommuterPage {
               response[key].pwd,
             )
           );
-          console.log("User: " +response[key].fname);
-          console.log("Password: " +response[key].lname);
+          console.log("Name: " +response[key].fname);
+          console.log("Email: " +response[key].email);
+          console.log("Password: " +response[key].pwd);
         }
         
       }
     );
     return(newVar);
+    return(newData);
   }
 
 }
