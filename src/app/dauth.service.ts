@@ -11,14 +11,16 @@ export class DAuthService {
   constructor(private http: HttpClient) { }
   private _newUsers: User[] = [];
   newUser(
+    
     fname: string,
     email: string,
-    pwd: string,){
+    pwd: string,
+    id: string,){
       const newUser = new User(
-        Math.random().toString(),
         fname,
         email,
         pwd,
+        Math.random().toString(),
       );
       this.http.post('https://postship-2c320-default-rtdb.firebaseio.com/newUser.json',
       {...newUser, id:null}).subscribe(response=>{
