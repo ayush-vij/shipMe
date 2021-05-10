@@ -25,6 +25,7 @@ import { FormsModule } from '@angular/forms';
 import { DAuthService } from './dauth.service';
 import { environment } from 'src/environments/environment';
 import * as firebase from 'firebase';
+import { Firebase  } from '@ionic-native/firebase';
 
 
 @NgModule({
@@ -53,4 +54,7 @@ import * as firebase from 'firebase';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+
+  
+}
