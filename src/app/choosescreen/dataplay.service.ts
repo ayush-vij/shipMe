@@ -3,8 +3,8 @@ import { variable } from "@angular/compiler/src/output/output_ast";
 import { Injectable } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import { PostData } from "./dataplay.model";
-import { AuthService } from '../auth.service';
-import { User } from '../auth.model';
+import { DAuthService } from '../dauth.service';
+import { User } from '../dauth.model';
 
 @Injectable({
   providedIn: "root",
@@ -14,6 +14,7 @@ export class DataplayService {
   constructor(private http: HttpClient) {}
   private _postdata: PostData[] = [];
   private _daata: PostData[] = [];
+
   get posts() {
     return [...this._postdata];
   }
@@ -28,6 +29,7 @@ export class DataplayService {
 
   
   newPostData(
+    name: string,
     custype: string,
     travelfrom: string,
     travelcity: string,
@@ -39,6 +41,7 @@ export class DataplayService {
   ) {
     const newPostData = new PostData(
       Math.random().toString(),
+      name,
       custype,
       travelfrom,
       travelcity,
@@ -59,6 +62,10 @@ export class DataplayService {
     this._postdata.push(newPostData);
     // console.log(this._postdata);
   }
+
+  postCredzToDB(){
+    var credzData: any;
+  }
 //comment
   fetchPostData() {
     var postdata: PostData[] = [];
@@ -69,6 +76,7 @@ export class DataplayService {
           postdata.push(
             new PostData(
               key,
+              response[key].fname,
               response[key].custype,
               response[key].travelfrom,
               response[key].travelcity,
@@ -88,6 +96,31 @@ export class DataplayService {
   getPostData(id: String) {
     return { ...this._postdata.find((p) => p.id === id) };
   }
+
+  fetchUser(){
+    var newVar: User[]=[];
+    this.http.get('https://postship-2c320-default-rtdb.firebaseio.com/newUser.json')
+    .subscribe(
+      response => {
+        for (const key in response){
+          newVar.push(
+            new User(
+              key,
+              response[key].fname,
+              response[key].email,
+              response[key].pwd,
+            )
+          );
+          const name = response[key].fname;
+          console.log("Name: " +response[key].fname);
+          console.log("Email: " +response[key].email);
+          console.log("Password: " +response[key].pwd);
+        }
+        
+      }
+    );
+    return(newVar);    
+    }
 
   removePostData(id: string) {
     this.http

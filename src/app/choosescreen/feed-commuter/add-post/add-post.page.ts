@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../../../dauth.model';
 import { DataplayService } from '../../dataplay.service'
 
 @Component({
@@ -10,10 +12,16 @@ import { DataplayService } from '../../dataplay.service'
 })
 export class AddPostPage implements OnInit {
   form: FormGroup;
-  constructor(private router: Router, private dataplayService: DataplayService) { }
+  user: User[];
+  constructor(private router: Router, private dataplayService: DataplayService, private http: HttpClient,) { }
 
   ngOnInit() {
+    this.dataplayService.fetchUser();
     this.form = new FormGroup({
+      'name': new FormControl(null,{
+        updateOn: 'blur',
+        validators: [Validators.required]
+      }),
       'custype': new FormControl(null,{
         updateOn: 'blur',
         validators: [Validators.required]
@@ -50,8 +58,11 @@ export class AddPostPage implements OnInit {
   }
 
   onNewPost(){
+    this.dataplayService.fetchUser();
     console.log(this.form);
+    console.log("Naam: " +this.dataplayService.fetchUser);
     this.dataplayService.newPostData(
+      this.dataplayService.fetchUser.name,
       this.form.value.custype,
       this.form.value.travelfrom,
       this.form.value.travelcity,

@@ -2,25 +2,47 @@
   padding-top: 15vw;
 }
 
+
 .inputs{
   padding-top: 5vw;
 }
 
-.email-input{
+.img-input{
+  background-color: rgb(53, 54, 53);
+  border-radius: 2vw;
+  font-size: 3vw;
+  color: rgb(190, 190, 190);
+}
+.name-input{
+  top: 1vw;
   background-color: rgb(53, 54, 53);
   border-radius: 2vw;
   font-size: 6vw;
 }
 
-.pwd-input{
+.email-input{
   top: 3vw;
   background-color: rgb(53, 54, 53);
   border-radius: 2vw;
   font-size: 6vw;
 }
 
+.pwd-input{
+  top: 6vw;
+  background-color: rgb(53, 54, 53);
+  border-radius: 2vw;
+  font-size: 6vw;
+}
+
+.rpwd-input{
+  top: 9vw;
+  background-color: rgb(53, 54, 53);
+  border-radius: 2vw;
+  font-size: 6vw;
+}
+
 .btn-div{
-  padding-top: 9vw;
+  padding-top: 12vw;
   padding-left: 10vw;
   padding-right: 10vw;
   
@@ -37,10 +59,23 @@
 
 .text{
   color: #c8bfbf;
-  font-size: 5vw;
+  font-size: 3vw;
+  width: 100%;
+  // height: 12.5vw;
+  // padding-top: 1vw;
+  padding-left: 18.5vw;
+
+}
+
+
+.message{
+  color: #f1eded;
+  font-size: 4.25vw;
+  font-weight: bolder;
   width: 100%;
   height: 12.5vw;
-  padding-top: 5vw;
-  padding-left: 15vw;
+  padding-top: 2vw;
+  padding-left: 3.75vw;
+  text-shadow: 2px 2px 8px rgb(48, 129, 223);
 
 }

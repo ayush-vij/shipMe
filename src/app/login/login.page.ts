@@ -1,6 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 // import { AuthService } from '../auth.service';
-import { User } from '../auth.model';
+import { User } from '../dauth.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -131,8 +131,7 @@ signup() {
 
 login() {
   this.authService.login(this.email, this.password);
-  this.email = this.password = '';   
-  this.router.navigate(['../choosescreen/']);
+  this.email = this.password = '';  
 }
 logsout() {
   this.authService.logout();

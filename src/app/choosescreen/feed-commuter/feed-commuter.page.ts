@@ -4,8 +4,8 @@ import { Router, RouterLink } from '@angular/router';
 import { DataplayService } from '../dataplay.service';
 import { PostData } from '../dataplay.model';
 import { DatePipe } from '@angular/common';
-import { AuthService } from '../../auth.service';
-import { User } from '../../auth.model';
+import { DAuthService } from '../../dauth.service';
+import { User } from '../../dauth.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
@@ -26,15 +26,15 @@ export class FeedCommuterPage {
     private dataplayService: DataplayService,
     private actionSheetController: ActionSheetController,
     private datePipe: DatePipe,
-    private authService: AuthService,
+    private authService: DAuthService,
     private http: HttpClient,
     private toastController: ToastController) { }
 
     doRefresh(event) {
-      console.log('Begin async operation');
+      console.log('Refreshing..');
   
       setTimeout(() => {
-        console.log('Async operation has ended');
+        console.log('Refreshed! Data has been updated!');
         event.target.complete();
       }, 1000);
     }
@@ -87,7 +87,30 @@ export class FeedCommuterPage {
 
   loadUser(){
     var newVar: User[]=[];
-    this.http.get('https://ship-6ba1e-default-rtdb.firebaseio.com/newUser.json')
+    var newData: PostData[]=[];
+    this.http.get('https://postship-2c320-default-rtdb.firebaseio.com/newPostData.json')
+    .subscribe(
+      response => {
+        for (const key in response){
+          newData.push(
+            new PostData(
+              key,
+              response[key].fname,
+              response[key].booked,
+              response[key].custype,
+              response[key].email,
+              response[key].travelcity,
+              response[key].traveldate,
+              response[key].travelfrom,
+              response[key].travelto,
+              response[key].traveltocity,
+            )
+          );
+        }
+        
+      }
+    );
+    this.http.get('https://postship-2c320-default-rtdb.firebaseio.com/newUser.json')
     .subscribe(
       response => {
         for (const key in response){
@@ -95,18 +118,19 @@ export class FeedCommuterPage {
             new User(
               key,
               response[key].fname,
-              response[key].lname,
               response[key].email,
               response[key].pwd,
             )
           );
-          console.log("User: " +response[key].fname);
-          console.log("Password: " +response[key].lname);
+          console.log("Name: " +response[key].fname);
+          console.log("Email: " +response[key].email);
+          console.log("Password: " +response[key].pwd);
         }
         
       }
     );
     return(newVar);
+    return(newData);
   }
 
 }
