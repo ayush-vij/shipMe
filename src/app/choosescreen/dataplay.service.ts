@@ -3,8 +3,8 @@ import { variable } from "@angular/compiler/src/output/output_ast";
 import { Injectable } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import { PostData } from "./dataplay.model";
-import { AuthService } from '../auth.service';
-import { User } from '../auth.model';
+import { DAuthService } from '../dauth.service';
+import { User } from '../dauth.model';
 
 @Injectable({
   providedIn: "root",
@@ -14,6 +14,7 @@ export class DataplayService {
   constructor(private http: HttpClient) {}
   private _postdata: PostData[] = [];
   private _daata: PostData[] = [];
+
   get posts() {
     return [...this._postdata];
   }
@@ -58,6 +59,10 @@ export class DataplayService {
       });
     this._postdata.push(newPostData);
     // console.log(this._postdata);
+  }
+
+  postCredzToDB(){
+    var credzData: any;
   }
 //comment
   fetchPostData() {

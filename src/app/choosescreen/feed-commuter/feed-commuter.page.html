@@ -15,7 +15,7 @@
     </super-tab-button>
     <super-tab-button>
       <!-- <ion-icon color="light" name="bookmarks-sharp"></ion-icon> -->
-      <ion-label color="light">Saved</ion-label>
+      <ion-label color="light">My posts</ion-label>
     </super-tab-button>
   </super-tabs-toolbar>
 
@@ -40,7 +40,7 @@
         
         <ion-row *ngIf="postdata && postdata.length > 0">
           <ion-col size-md="6" offset-md="3">
-              <ion-card *ngFor="let post of postdata; let i=index" detail (click)="onSave(pst)">
+              <ion-card *ngFor="let post of postdata; let i=index">
                 <ion-card-header>
                   <ion-chip>
                     <ion-avatar>
@@ -229,7 +229,7 @@
     <!-- <ion-content>Requests</ion-content> -->
   </super-tab>
   <super-tab>
-    <ion-content>Bookmarked Requests</ion-content>
+    <ion-content>My posts</ion-content>
   </super-tab>
 </super-tabs-container>
 </super-tabs>
