@@ -24,6 +24,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
 import { DAuthService } from './dauth.service';
 import { environment } from 'src/environments/environment';
+import * as firebase from 'firebase';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { environment } from 'src/environments/environment';
   imports: [
     AngularFirestoreModule,
     AngularFireStorageModule,
+    // firebase.initialiseApp(environment.firebase),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     FormsModule,
