@@ -45,10 +45,10 @@ export class AppComponent {
 
     // public authService: AuthService
   ) {
-    this.initializeApp();
+    this.initializeSplash();
   }
 
-  initializeApp() {
+  initializeSplash() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
@@ -56,6 +56,9 @@ export class AppComponent {
         this.splash = false;
       }, 0);
     });
+
+
+  
     // // get current screen orientation
     // console.log(this.screenOrientation.type); // logs the current orientation, example: 'landscape'
 

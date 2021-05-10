@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
 import * as firebase from 'firebase';
 import {WindowService} from '../../service/window.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-feed-commuter',
@@ -35,7 +36,8 @@ export class FeedCommuterPage {
     private datePipe: DatePipe,
     private authService: DAuthService,
     private http: HttpClient,
-    private toastController: ToastController) { }
+    private toastController: ToastController,
+  ) { }
 
     doRefresh(event) {
       console.log('Refreshing..');
@@ -86,15 +88,17 @@ export class FeedCommuterPage {
     
     this.postdata=this.dataplayService.fetchPostData();
     // console.log(this.postdata);
+    firebase.initializeApp(environment.firebase)
     this.windowRef=await this.windowService.windowRef;
     this.windowRef.recaptchaVerifier=await new firebase.auth.RecaptchaVerifier('recaptcha-container');
     await this.windowRef.recaptchaVerifier.render()
 
   }
+  
 
   sendLoginCode(){
     //Make sure phone number in e164 format
-       const num=this.prefix.toString()+this.line.toString();
+       const num = this.prefix.toString() + this.line.toString();
        const appVerifier=this.windowRef.recaptchaVerifier;
        firebase.auth().signInWithPhoneNumber(num,appVerifier)
        .then(result=>{
