@@ -6,7 +6,9 @@ import { User } from '../../../dauth.model';
 import { DataplayService } from '../../dataplay.service'
 import {WindowService} from '../../../service/window.service';
 import { environment } from 'src/environments/environment';
+
 import * as firebase from 'firebase';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-post',
@@ -22,7 +24,8 @@ export class AddPostPage implements OnInit {
   line:any;
   verifCode:any;
 
-  constructor(private router: Router, private dataplayService: DataplayService, private http: HttpClient,public windowService : WindowService,) { }
+  constructor(private router: Router, private dataplayService: DataplayService, private http: HttpClient,public windowService : WindowService,
+    private alertController: AlertController,) { }
 
 
   async ionViewWillEnter() {
@@ -43,18 +46,22 @@ export class AddPostPage implements OnInit {
        firebase.auth().signInWithPhoneNumber(num,appVerifier)
        .then(result=>{
        this.windowRef.confirmationResult=result;
+       this.otpprompt();
        }).catch(err=>console.log('err1',err))
     }
 
-  submitVerif(){
-   this.windowRef.confirmationResult.confirm(this.verifCode)
-   .then(async result=>{
-    
-    //If the result is successful...
-   })
-   .catch(err=>{
-    console.log('err2',err)
-   });}
+    submitVerif(verifCode){
+      console.log(verifCode);
+      this.windowRef.confirmationResult.confirm(this.verifCode)
+      .then(async result=>{
+       console.log("Verified!");
+       //If the result is successful...
+       this.onNewPost();
+       console.log("Code Verified");
+      })
+      .catch(err=>{
+       console.log('err2',err)
+      });}
 
    
   ngOnInit() {
@@ -104,6 +111,39 @@ export class AddPostPage implements OnInit {
         updateOn: 'blur',
         validators: [Validators.required]
       }),
+    });
+  }
+
+  otpprompt() {
+    this.alertController.create({
+      header: 'Verify the OTP',
+      subHeader: 'A One Time Password has been sent to the phone number you provided.',
+      message: 'Enter it here please.',
+      inputs: [
+        {
+          name: 'otp',
+          placeholder: '######',
+          
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: (data: any) => {
+            console.log('Canceled OTP Prompt', data);
+          }
+        },
+        {
+          text: 'Done!',
+          handler: (data: any) => {
+            //console.log(data); data variable is the entered value in the field
+            data.toString();
+            this.submitVerif(data);
+          }
+        }
+      ]
+    }).then(res => {
+      res.present();
     });
   }
 
