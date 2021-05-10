@@ -9,6 +9,8 @@ import { User } from '../../dauth.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
+import * as firebase from 'firebase';
+import {WindowService} from '../../service/window.service';
 
 @Component({
   selector: 'app-feed-commuter',
@@ -19,8 +21,13 @@ export class FeedCommuterPage {
   postdata: PostData[];
   user: User[];
   saved: PostData[];
+  windowRef:any;
+  prefix:any;
+  line:any;
+  verifCode:any;
   // postdata: any;
   constructor(
+    public windowService : WindowService,
     private alertController: AlertController, 
     private router: Router, 
     private dataplayService: DataplayService,
@@ -75,11 +82,35 @@ export class FeedCommuterPage {
     //   await alert.present();
     // }
 
-  ionViewWillEnter() {
+  async ionViewWillEnter() {
     
     this.postdata=this.dataplayService.fetchPostData();
     // console.log(this.postdata);
+    this.windowRef=await this.windowService.windowRef;
+    this.windowRef.recaptchaVerifier=await new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    await this.windowRef.recaptchaVerifier.render()
+
   }
+
+  sendLoginCode(){
+    //Make sure phone number in e164 format
+       const num=this.prefix.toString()+this.line.toString();
+       const appVerifier=this.windowRef.recaptchaVerifier;
+       firebase.auth().signInWithPhoneNumber(num,appVerifier)
+       .then(result=>{
+       this.windowRef.confirmationResult=result;
+       }).catch(err=>console.log('err1',err))
+    }
+
+  submitVerif(){
+   this.windowRef.confirmationResult.confirm(this.verifCode)
+   .then(async result=>{
+    
+    //If the result is successful...
+   })
+   .catch(err=>{
+    console.log('err2',err)
+   });}
 
   add(){
     this.router.navigate(['../choosescreen/feed-commuter/add-post']);
@@ -99,6 +130,7 @@ export class FeedCommuterPage {
               response[key].booked,
               response[key].custype,
               response[key].email,
+              response[key].intcode,
               response[key].phone,
               response[key].travelcity,
               response[key].traveldate,
