@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../../dauth.model';
@@ -50,6 +50,14 @@ export class AddPostPage implements OnInit {
         updateOn: 'blur',
         validators: [Validators.required, Validators.minLength(2)]
       }),
+      'intcode': new FormControl(null,{
+        updateOn: 'blur',
+        validators: [Validators.required]
+      }),
+      'phone': new FormControl(null,{
+        updateOn: 'blur',
+        validators: [Validators.required, Validators.minLength(9), Validators.maxLength(10)]
+      }),
       'traveldate': new FormControl(null,{
         updateOn: 'blur',
         validators: [Validators.required]
@@ -58,21 +66,22 @@ export class AddPostPage implements OnInit {
   }
 
   onNewPost(){
-    this.dataplayService.fetchUser();
-    console.log(this.form);
-    console.log("Naam: " +this.dataplayService.fetchUser);
-    this.dataplayService.newPostData(
-      this.dataplayService.fetchUser.name,
-      this.form.value.custype,
-      this.form.value.travelfrom,
-      this.form.value.travelcity,
-      this.form.value.travelto,
-      this.form.value.traveltocity,
-      this.form.value.booked,
-      this.form.value.email,
-      this.form.value.traveldate
+      this.dataplayService.newPostData(
+        this.form.value.name,
+        this.form.value.custype,
+        this.form.value.travelfrom,
+        this.form.value.travelcity,
+        this.form.value.travelto,
+        this.form.value.traveltocity,
+        this.form.value.booked,
+        this.form.value.email,
+        this.form.value.intcode,
+        this.form.value.phone,
+        this.form.value.traveldate
     );
     this.form.reset();
     this.router.navigate(['../choosescreen/feed-commuter/']);
   }
 }
+
+
