@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./choosescreen/feed-commuter/add-post/add-post.module').then( m => m.AddPostPageModule)
   },
   {
     path: 'login',
@@ -35,7 +35,8 @@ const routes: Routes = [
   {
     path: 'admin-login',
     loadChildren: () => import('./admin-login/admin-login.module').then( m => m.AdminLoginPageModule)
-  },  {
+  },
+  {
     path: 'contact',
     loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule)
   },
