@@ -37,6 +37,8 @@ export class DataplayService {
     traveltocity: string,
     booked: string,
     email: string,
+    intcode: string,
+    phone: number,
     traveldate: Date
   ) {
     const newPostData = new PostData(
@@ -49,6 +51,8 @@ export class DataplayService {
       traveltocity,
       booked,
       email,
+      intcode,
+      phone,
       traveldate,
     );
     this.http
@@ -76,7 +80,7 @@ export class DataplayService {
           postdata.push(
             new PostData(
               key,
-              response[key].fname,
+              response[key].name,
               response[key].custype,
               response[key].travelfrom,
               response[key].travelcity,
@@ -84,6 +88,8 @@ export class DataplayService {
               response[key].traveltocity,
               response[key].booked,
               response[key].email,
+              response[key].intcode,
+              response[key].phone,
               new Date(response[key].traveldate)
             )
           );

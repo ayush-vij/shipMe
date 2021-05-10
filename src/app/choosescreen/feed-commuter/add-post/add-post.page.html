@@ -1,92 +1,117 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title ion-align-center>Create a post</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title ion-align-center>Create a post</ion-title>
+    </ion-toolbar>
 </ion-header>
 <!-- //Comment -->
 <!-- hello -->
 
 <ion-content>
-  <form [formGroup]="form" >
-    <ion-grid>
-      <ion-row>
-        <ion-col>
+    <form [formGroup]="form">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+
+                    <br>
+                    <ion-item lines="full">
+                        <ion-label position="floating">Full Name</ion-label>
+                        <ion-input name="name" formControlName="name"></ion-input>
+                    </ion-item>
+                    <br>
+                    <ion-item>
+                        <ion-label position="floating">Are you a traveller or a requester?</ion-label>
+                        <ion-select formControlName="custype">
+                            <ion-select-option name="commuter" value="Commuter">Traveller</ion-select-option>
+                            <ion-select-option name="requester" value="Requester">Requester</ion-select-option>
+                        </ion-select>
+                    </ion-item>
 
 
-          <ion-item>
-            <ion-label position="floating">Are you a traveller or a requester?</ion-label>
-            <ion-select formControlName="custype">
-              <ion-select-option name="commuter" value="Commuter">Traveller</ion-select-option>
-              <ion-select-option name="requester" value="Requester">Requester</ion-select-option>
-            </ion-select>
-          </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Where are you traveling from?</ion-label>
+                        <ion-select formControlName="travelfrom">
+                            <ion-select-option name="US" value="United States">United States</ion-select-option>
+                            <ion-select-option name="CA" value="Canada">Canada</ion-select-option>
+                            <ion-select-option name="UK" value="United Kingdom">United Kingdom</ion-select-option>
+                            <ion-select-option name="FR" value="France">France</ion-select-option>
+                        </ion-select>
+                    </ion-item>
 
+                    <br>
+                    <ion-item lines="full">
+                        <ion-label position="floating">City traveling from? (with State/Province)</ion-label>
+                        <ion-input name="fromcity" formControlName="travelcity"></ion-input>
+                    </ion-item>
+                    <br>
+                    <ion-item>
+                        <ion-label position="floating">Where are you traveling to?</ion-label>
+                        <ion-select formControlName="travelto">
+                            <ion-select-option name="US" value="United States">United States</ion-select-option>
+                            <ion-select-option name="CA" value="Canada">Canada</ion-select-option>
+                            <ion-select-option name="UK" value="United Kingdom">United Kingdom</ion-select-option>
+                            <ion-select-option name="FR" value="France">France</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <br>
+                    <ion-item lines="full">
+                        <ion-label position="floating">City traveling to? (with State/Province)</ion-label>
+                        <ion-input name="tocity" formControlName="traveltocity"></ion-input>
+                    </ion-item>
+                    <br>
+                    <ion-item>
+                        <ion-label position="floating">Have you booked your tickets, yet?</ion-label>
+                        <ion-select formControlName="booked">
+                            <ion-select-option name="yes" value="Yes">Yes</ion-select-option>
+                            <ion-select-option name="no" value="No">No</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <br>
+                    <ion-item lines="full">
+                        <ion-label position="floating">Email</ion-label>
+                        <ion-input name="email" formControlName="email"></ion-input>
+                    </ion-item>
+                    <br>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col>
+                                <ion-select formControlName="intcode">
+                                    <ion-select-option name="fr" value="+33" default>+33</ion-select-option>
+                                    <ion-select-option name="usca" value="+1">+1</ion-select-option>
+                                    <ion-select-option name="uk" value="+61">+61</ion-select-option>
+                                </ion-select>
+                            </ion-col>
+                            <ion-col>
+                                <ion-item lines="full">
+                                    <ion-label position="floating"></ion-label>
+                                    <ion-label position="floating">Phone Number</ion-label>
+                                    <ion-input name="phone" formControlName="phone"></ion-input>
+                                </ion-item>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
 
-          <ion-item>
-            <ion-label position="floating">Where are you traveling from?</ion-label>
-            <ion-select formControlName="travelfrom">
-              <ion-select-option name="US" value="United States">United States</ion-select-option>
-              <ion-select-option name="CA" value="Canada">Canada</ion-select-option>
-              <ion-select-option name="UK" value="United Kingdom">United Kingdom</ion-select-option>
-              <ion-select-option name="FR" value="France">France</ion-select-option>
-            </ion-select>
-          </ion-item>
-
-    <br>
-    <ion-item lines="full">
-      <ion-label position="floating">City traveling from? (with State/Province)</ion-label>
-      <ion-input name="fromcity"  formControlName="travelcity"></ion-input>
-    </ion-item>
-      <br>
-      <ion-item>
-        <ion-label position="floating">Where are you traveling to?</ion-label>
-        <ion-select formControlName="travelto">
-          <ion-select-option name="US" value="United States">United States</ion-select-option>
-          <ion-select-option name="CA" value="Canada">Canada</ion-select-option>
-          <ion-select-option name="UK" value="United Kingdom">United Kingdom</ion-select-option>
-          <ion-select-option name="FR" value="France">France</ion-select-option>
-        </ion-select>
-      </ion-item>
-    <br>
-    <ion-item lines="full">
-      <ion-label position="floating">City traveling to? (with State/Province)</ion-label>
-      <ion-input name="tocity" formControlName="traveltocity"></ion-input>
-    </ion-item>
-      <br>
-      <ion-item>
-        <ion-label position="floating">Have you booked your tickets, yet?</ion-label>
-        <ion-select formControlName="booked">
-          <ion-select-option name="yes" value="Yes">Yes</ion-select-option>
-          <ion-select-option name="no" value="No">No</ion-select-option>
-        </ion-select>
-      </ion-item>
-    <br>
-    <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input name="email" formControlName="email"></ion-input>
-    </ion-item>
-      <br>
-    <ion-item>
-      <ion-label>Travel Date?</ion-label>
-      <ion-datetime displayFormat="DD-MMM-YYYY" formControlName="traveldate" max="2022-12-31" min="2021-02-05" minmonth="feb"></ion-datetime>
-    </ion-item><br>
-    <br><br><br>
-    </ion-col>
-    </ion-row>
-    </ion-grid>
-  </form> 
+                    <br>
+                    <ion-item>
+                        <ion-label>Travel Date?</ion-label>
+                        <ion-datetime displayFormat="DD-MMM-YYYY" formControlName="traveldate" max="2022-12-31" min="2021-02-05" minmonth="feb"></ion-datetime>
+                    </ion-item><br>
+                    <br><br><br>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
 </ion-content>
-    <!-- <ion-row>
+<!-- <ion-row>
       <ion-col>
         <ion-button name="submit" color="danger" expand="block">Submit</ion-button>
       </ion-col>
     </ion-row> -->
 
-    <ion-fab vertical="bottom" horizontal="center" slot="fixed" (click)="onNewPost()">
-      <ion-fab-button name="submit">
+<ion-fab vertical="bottom" horizontal="center" slot="fixed" (click)="onNewPost()">
+    <ion-fab-button name="submit">
         <ion-icon name="checkmark"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
+    </ion-fab-button>
+</ion-fab>
 
 
 
@@ -102,8 +127,8 @@
 
 
 
-    <!-- BLANK -->
-    <!-- <ion-item lines="full">
+<!-- BLANK -->
+<!-- <ion-item lines="full">
       <ion-label position="floating">Name</ion-label>
       <ion-input name="text" required></ion-input>
     </ion-item>
@@ -123,8 +148,8 @@
       <ion-input name="text" required></ion-input>
     </ion-item> -->
 
-    <!-- Radio buttons -->
-    <!-- <ion-radio-group lines="full">
+<!-- Radio buttons -->
+<!-- <ion-radio-group lines="full">
       <ion-list-header>
         <ion-label>Gender</ion-label>
       </ion-list-header>
@@ -140,8 +165,8 @@
       </ion-item>
     </ion-radio-group> -->
 
-    <!-- Checkboxes -->
-    <!-- <ion-list lines="full">
+<!-- Checkboxes -->
+<!-- <ion-list lines="full">
       <ion-list-header>
         <ion-label>Subjects</ion-label>
       </ion-list-header>

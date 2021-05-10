@@ -9,6 +9,8 @@ export class PostData{
       public traveltocity: string,
       public booked: string,
       public email: string,
+      public intcode: string,
+      public phone: number,
       public traveldate: Date,
       ){}
 }
