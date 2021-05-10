@@ -71,12 +71,46 @@
                         <ion-input name="email" formControlName="email"></ion-input>
                     </ion-item>
                     <br>
+                    <br>
+                    <ion-item>
+                        <ion-label>Travel Date?</ion-label>
+                        <ion-datetime displayFormat="DD-MMM-YYYY" formControlName="traveldate" max="2022-12-31" min="2021-02-05" minmonth="feb"></ion-datetime>
+                    </ion-item><br>
+                    <ion-grid>
+                        <!-- <ion-row>
+                           <ion-col size='3' style="font-size:0.8em;font-weight:bolder;">
+                             <strong>
+                               PRE FIX
+                             </strong>
+                           </ion-col>
+                           <ion-col size='9' style="font-size:0.8em;font-weight:bolder;">
+                             <strong>
+                               PHONE NUMBER
+                             </strong>
+                           </ion-col>
+                        </ion-row> -->
+                       <!-- <ion-row>
+                            <ion-col size='3'>
+                               <ion-input [(ngModel)]="prefix" placeholder="6012" type="tel" maxlength='4'></ion-input>
+                            </ion-col>
+                            <ion-col size='9'>
+                               <ion-input [(ngModel)]="line" placeholder="2345678" type="tel"></ion-input>
+                            </ion-col>
+                       </ion-row> -->
+                         
+                    </ion-grid>
+                    <!-- <ion-button (click)="sendLoginCode()" color="primary" style="z-index:4;width:100%;">
+                             <ion-icon name="chevron-forward" slot="end"></ion-icon>
+                             SUBMIT
+                    </ion-button> -->
+                    
                     <ion-grid>
                         <ion-row>
                             <ion-col>
-                                <ion-select formControlName="intcode">
+                                <ion-select [(ngModel)]="prefix" formControlName="intcode">
                                     <ion-select-option name="fr" value="+33" default>+33</ion-select-option>
                                     <ion-select-option name="usca" value="+1">+1</ion-select-option>
+                                    <ion-select-option name="pak" value="+92">+92</ion-select-option>
                                     <ion-select-option name="uk" value="+61">+61</ion-select-option>
                                 </ion-select>
                             </ion-col>
@@ -84,17 +118,16 @@
                                 <ion-item lines="full">
                                     <ion-label position="floating"></ion-label>
                                     <ion-label position="floating">Phone Number</ion-label>
-                                    <ion-input name="phone" formControlName="phone"></ion-input>
+                                    <ion-input [(ngModel)]="line" name="phone" formControlName="phone"></ion-input>
                                 </ion-item>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
-
+                    <div class='ion-center' style="position:relative;z-index:10;width:100%;margin-left:2em;margin-right:auto;">
+                        <div id="recaptcha-container"></div>
+                      </div>
                     <br>
-                    <ion-item>
-                        <ion-label>Travel Date?</ion-label>
-                        <ion-datetime displayFormat="DD-MMM-YYYY" formControlName="traveldate" max="2022-12-31" min="2021-02-05" minmonth="feb"></ion-datetime>
-                    </ion-item><br>
+                    
                     <br><br><br>
                 </ion-col>
             </ion-row>
@@ -107,7 +140,8 @@
       </ion-col>
     </ion-row> -->
 
-<ion-fab vertical="bottom" horizontal="center" slot="fixed" (click)="onNewPost()">
+<ion-fab vertical="bottom" horizontal="center" slot="fixed" (click)="sendLoginCode()" >
+    <!-- (click)="onNewPost()" -->
     <ion-fab-button name="submit">
         <ion-icon name="checkmark"></ion-icon>
     </ion-fab-button>

@@ -10,8 +10,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
 import * as firebase from 'firebase';
-import {WindowService} from '../../service/window.service';
-import { environment } from 'src/environments/environment';
+// import {WindowService} from '../../service/window.service';
+// import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-feed-commuter',
@@ -28,7 +28,7 @@ export class FeedCommuterPage {
   verifCode:any;
   // postdata: any;
   constructor(
-    public windowService : WindowService,
+    // public windowService : WindowService,
     private alertController: AlertController, 
     private router: Router, 
     private dataplayService: DataplayService,
@@ -84,16 +84,16 @@ export class FeedCommuterPage {
     //   await alert.present();
     // }
 
-  async ionViewWillEnter() {
+  // async ionViewWillEnter() {
     
-    this.postdata=this.dataplayService.fetchPostData();
-    // console.log(this.postdata);
-    firebase.initializeApp(environment.firebase)
-    this.windowRef=await this.windowService.windowRef;
-    this.windowRef.recaptchaVerifier=await new firebase.auth.RecaptchaVerifier('recaptcha-container');
-    await this.windowRef.recaptchaVerifier.render()
+  //   this.postdata=this.dataplayService.fetchPostData();
+  //   // console.log(this.postdata);
+  //   firebase.initializeApp(environment.firebase)
+  //   this.windowRef=await this.windowService.windowRef;
+  //   this.windowRef.recaptchaVerifier=await new firebase.auth.RecaptchaVerifier('recaptcha-container');
+  //   await this.windowRef.recaptchaVerifier.render()
 
-  }
+  // }
   
 
   sendLoginCode(){
@@ -107,12 +107,11 @@ export class FeedCommuterPage {
     }
 
   submitVerif(){
-    console.log(this.verifCode);
-    this.verifCode.toString();
    this.windowRef.confirmationResult.confirm(this.verifCode.toString())
    .then(async result=>{
     console.log("Verified!");
     //If the result is successful...
+    console.log("Code Verified");
    })
    .catch(err=>{
     console.log('err2',err)
