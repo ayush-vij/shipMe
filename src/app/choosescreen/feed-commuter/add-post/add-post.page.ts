@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../../dauth.model';
 import { DataplayService } from '../../dataplay.service'
+import {WindowService} from '../../../service/window.service';
+import { environment } from 'src/environments/environment';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-add-post',
@@ -13,8 +16,47 @@ import { DataplayService } from '../../dataplay.service'
 export class AddPostPage implements OnInit {
   form: FormGroup;
   user: User[];
-  constructor(private router: Router, private dataplayService: DataplayService, private http: HttpClient,) { }
 
+  windowRef:any;
+  prefix:any;
+  line:any;
+  verifCode:any;
+
+  constructor(private router: Router, private dataplayService: DataplayService, private http: HttpClient,public windowService : WindowService,) { }
+
+
+  async ionViewWillEnter() {
+    
+    // this.postdata=this.dataplayService.fetchPostData();
+    // console.log(this.postdata);
+    firebase.initializeApp(environment.firebase)
+    this.windowRef=await this.windowService.windowRef;
+    this.windowRef.recaptchaVerifier=await new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    await this.windowRef.recaptchaVerifier.render()
+
+  }
+
+  sendLoginCode(){
+    //Make sure phone number in e164 format
+       const num = this.prefix.toString() + this.line.toString();
+       const appVerifier=this.windowRef.recaptchaVerifier;
+       firebase.auth().signInWithPhoneNumber(num,appVerifier)
+       .then(result=>{
+       this.windowRef.confirmationResult=result;
+       }).catch(err=>console.log('err1',err))
+    }
+
+  submitVerif(){
+   this.windowRef.confirmationResult.confirm(this.verifCode)
+   .then(async result=>{
+    
+    //If the result is successful...
+   })
+   .catch(err=>{
+    console.log('err2',err)
+   });}
+
+   
   ngOnInit() {
     this.dataplayService.fetchUser();
     this.form = new FormGroup({
