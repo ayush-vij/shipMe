@@ -20,6 +20,16 @@ import { ToastController } from '@ionic/angular';
 import { CameraOptions, CameraSource } from '@capacitor/core';
 import { DAuthService } from '../dauth.service';
 
+import { Observable } from 'rxjs';
+import { finalize, tap } from 'rxjs/operators';
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+
+export interface imgFile {
+  name: string;
+  filepath: string;
+  size: number; }
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -37,6 +47,23 @@ export class RegisterPage implements OnInit {
   form: FormGroup;
 
 
+  // File upload task 
+  fileUploadTask: AngularFireUploadTask;
+  // Upload progress
+  percentageVal: Observable<number>;
+  // Track file uploading with snapshot
+  trackSnapshot: Observable<any>;
+  // Uploaded File URL
+  UploadedImageURL: Observable<string>;
+  // Uploaded image collection
+  files: Observable<imgFile[]>;
+  // Image specifications
+  imgName: string;
+  imgSize: number;
+  // File uploading status
+  isFileUploading: boolean;
+  isFileUploaded: boolean;
+
   public appPages = [
     {
       title: 'Home',
@@ -49,6 +76,8 @@ export class RegisterPage implements OnInit {
       icon: 'list'
     }];
 
+    private filesCollection: AngularFirestoreCollection<imgFile>;
+
   constructor(
     private firebaseAuth: AngularFireAuth,
     private http: HttpClient, 
@@ -60,8 +89,18 @@ export class RegisterPage implements OnInit {
     public authService: AuthService,
     private dauth: DAuthService,
     public toastController: ToastController,
+    private afs: AngularFirestore,
+    private afStorage: AngularFireStorage,
    // private camera: Camera,
-  ) { }
+  ) 
+  {
+    this.isFileUploading = false;
+    this.isFileUploaded = false;
+    
+    // Define uploaded files collection
+    this.filesCollection = afs.collection<imgFile>('imagesCollection');
+    this.files = this.filesCollection.valueChanges();
+  }
 
   // const options: CameraOptions = {
   //   quality: 100,

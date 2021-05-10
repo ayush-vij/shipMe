@@ -17,6 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DataplayService } from '../app/choosescreen/dataplay.service';
 import { DatePipe } from '@angular/common';
 
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
@@ -28,6 +30,8 @@ import { environment } from 'src/environments/environment';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
+    AngularFirestoreModule,
+    AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     FormsModule,

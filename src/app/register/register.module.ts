@@ -8,6 +8,10 @@ import { RegisterPageRoutingModule } from './register-routing.module';
 
 import { RegisterPage } from './register.page';
 
+
+import { FormatFileSizePipe } from './format-file-size.pipe';
+
+
 @NgModule({
   imports: [
     FormsModule,
@@ -16,6 +20,6 @@ import { RegisterPage } from './register.page';
     IonicModule,
     RegisterPageRoutingModule
   ],
-  declarations: [RegisterPage]
+  declarations: [RegisterPage, FormatFileSizePipe]
 })
 export class RegisterPageModule {}
