@@ -50,11 +50,11 @@ export class AddPostPage implements OnInit {
        }).catch(err=>console.log('err1',err))
     }
 
-    submitVerif(verifCode){
+    submitVerif(){
      // verifCode = verifCode.toString();
       console.log(verifCode.value);
       console.log(typeof(verifCode));
-      this.windowRef.confirmationResult.confirm(verifCode)
+      this.windowRef.confirmationResult.confirm(this.otpprompt.data)
       .then(async (result) =>{
         console.log(result);
         this.onNewPost();
