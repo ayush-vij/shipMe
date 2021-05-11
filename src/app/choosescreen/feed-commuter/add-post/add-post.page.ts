@@ -51,15 +51,13 @@ export class AddPostPage implements OnInit {
     }
 
     submitVerif(verifCode){
-      verifCode = verifCode.toString();
-      console.log(verifCode);
+     // verifCode = verifCode.toString();
+      console.log(verifCode.value);
       console.log(typeof(verifCode));
       this.windowRef.confirmationResult.confirm(verifCode)
-      .then(async result=>{
-       console.log("Verified!");
-       //If the result is successful...
-       this.onNewPost();
-       console.log("Code Verified");
+      .then(async (result) =>{
+        console.log(result);
+        this.onNewPost();
       })
       .catch(err=>{
        console.log('err2',err)
@@ -139,8 +137,8 @@ export class AddPostPage implements OnInit {
           text: 'Done!',
           handler: (data: any) => {
             //console.log(data); data variable is the entered value in the field
-            //data.toString();
-            this.submitVerif(data);
+            data.toString();
+            this.submitVerif();
           }
         }
       ]
