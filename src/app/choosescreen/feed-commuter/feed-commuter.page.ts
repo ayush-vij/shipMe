@@ -41,7 +41,7 @@ export class FeedCommuterPage {
 
     doRefresh(event) {
       console.log('Refreshing..');
-  
+      this.loadUser();
       setTimeout(() => {
         console.log('Refreshed! Data has been updated!');
         event.target.complete();
@@ -145,9 +145,9 @@ export class FeedCommuterPage {
             )
           );
         }
-        
       }
-    );
+    )
+    console.log(newData);
     this.http.get('https://postship-2c320-default-rtdb.firebaseio.com/newUser.json')
     .subscribe(
       response => {
@@ -168,7 +168,7 @@ export class FeedCommuterPage {
       }
     );
     return(newVar);
-    return(newData);
+    
   }
 
 }
