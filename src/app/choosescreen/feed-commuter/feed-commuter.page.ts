@@ -190,7 +190,7 @@ export class FeedCommuterPage {
   }
 
   viewPost(id:String) {
-    console.log("hello");
+    console.log("AAEEEEEEE");
     console.log(id);
     this.router.navigate(['../post-details/'+id]);
     
