@@ -39,14 +39,7 @@ export class FeedCommuterPage {
     private toastController: ToastController,
   ) { }
 
-    doRefresh(event) {
-      console.log('Refreshing..');
   
-      setTimeout(() => {
-        console.log('Refreshed! Data has been updated!');
-        event.target.complete();
-      }, 1000);
-    }
 
     // async presentToast() {
     //   const toast = await this.toastController.create({
@@ -169,6 +162,16 @@ export class FeedCommuterPage {
     );
      return(newVar);
      return(newData);
+  }
+
+  doRefresh(event) {
+    console.log('Refreshing..');
+    this.loadUser();
+
+    setTimeout(() => {
+      console.log('Refreshed! Data has been updated!');
+      event.target.complete();
+    }, 1000);
   }
 
 }

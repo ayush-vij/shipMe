@@ -84,13 +84,11 @@ export class AddPostPage implements OnInit {
      // verifCode = verifCode.toString();
       // console.log(verifCode.value);
       // console.log(typeof(verifCode));
-<<<<<<< HEAD
+
       this.windowRef.confirmationResult.confirm(code)
       .then(result=>{
-=======
       this.windowRef.confirmationResult.confirm(this.verifCode)
-      .then(async (result) =>{
->>>>>>> eba1ee109514100c1ea4f267a418e0c18777fa48
+      
         console.log(result);
         this.onNewPost();
       })
