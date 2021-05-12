@@ -84,16 +84,16 @@ export class FeedCommuterPage {
     //   await alert.present();
     // }
 
-  // async ionViewWillEnter() {
+  async ionViewWillEnter() {
     
-  //   this.postdata=this.dataplayService.fetchPostData();
-  //   // console.log(this.postdata);
-  //   firebase.initializeApp(environment.firebase)
-  //   this.windowRef=await this.windowService.windowRef;
-  //   this.windowRef.recaptchaVerifier=await new firebase.auth.RecaptchaVerifier('recaptcha-container');
-  //   await this.windowRef.recaptchaVerifier.render()
+    this.postdata=this.dataplayService.fetchPostData();
+    // console.log(this.postdata);
+    // firebase.initializeApp(environment.firebase)
+    // this.windowRef=await this.windowService.windowRef;
+    // this.windowRef.recaptchaVerifier=await new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    // await this.windowRef.recaptchaVerifier.render()
 
-  // }
+  }
   
 
   sendLoginCode(){
@@ -167,8 +167,8 @@ export class FeedCommuterPage {
         
       }
     );
-    return(newVar);
-    return(newData);
+     return(newVar);
+     return(newData);
   }
 
 }

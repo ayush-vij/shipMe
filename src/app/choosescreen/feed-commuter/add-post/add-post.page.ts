@@ -23,6 +23,7 @@ export class AddPostPage implements OnInit {
   prefix:any;
   line:any;
   verifCode:String;
+  
 
   constructor(private router: Router, private dataplayService: DataplayService, private http: HttpClient,public windowService : WindowService,
     private alertController: AlertController,) { }
@@ -50,12 +51,13 @@ export class AddPostPage implements OnInit {
        }).catch(err=>console.log('err1',err))
     }
 
-    submitVerif(){
+    submitVerif(code){
+      var code;
      // verifCode = verifCode.toString();
-      console.log(verifCode.value);
-      console.log(typeof(verifCode));
-      this.windowRef.confirmationResult.confirm(this.otpprompt.data)
-      .then(async (result) =>{
+      // console.log(verifCode.value);
+      // console.log(typeof(verifCode));
+      this.windowRef.confirmationResult.confirm(code)
+      .then(result=>{
         console.log(result);
         this.onNewPost();
       })
@@ -138,7 +140,7 @@ export class AddPostPage implements OnInit {
           handler: (data: any) => {
             //console.log(data); data variable is the entered value in the field
             data.toString();
-            this.submitVerif();
+            this.submitVerif(data.toString());
           }
         }
       ]
