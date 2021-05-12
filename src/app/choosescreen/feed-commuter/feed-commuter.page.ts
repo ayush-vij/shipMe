@@ -109,7 +109,7 @@ export class FeedCommuterPage {
   submitVerif(){
    this.windowRef.confirmationResult.confirm(this.verifCode.toString())
    .then(async result=>{
-    console.log("Verified!");
+    
     //If the result is successful...
     console.log("Code Verified");
    })
