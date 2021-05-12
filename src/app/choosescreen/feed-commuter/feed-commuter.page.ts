@@ -174,7 +174,7 @@ export class FeedCommuterPage {
   viewPost(id:String) {
     console.log("AAEEEEEEE");
     console.log(id);
-    this.router.navigate(['../post-details/'+id]);
+    this.router.navigate(['/choosescreen/feed-commuter/post-details/'+id]);
     
   }
 

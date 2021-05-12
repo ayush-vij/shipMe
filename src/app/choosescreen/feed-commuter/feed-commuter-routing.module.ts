@@ -14,11 +14,15 @@ const routes: Routes = [
   },
   {
     path: 'post-details',
-    loadChildren: () => import('../post-details/post-details.module').then( m => m.PostDetailsPageModule)
+    loadChildren: () => import('./post-details/post-details.module').then( m => m.PostDetailsPageModule)
   },
   {
     path: 'post-details',
-    loadChildren: () => import('../post-details/post-details-routing.module').then( m => m.PostDetailsPageRoutingModule)
+    loadChildren: () => import('./post-details/post-details-routing.module').then( m => m.PostDetailsPageRoutingModule)
+  },
+  {
+    path: 'post-detailss',
+    loadChildren: () => import('./post-details/post-details.module').then( m => m.PostDetailsPageModule)
   },
 ];
 

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button Href="../feed-commuter"></ion-back-button>
+      </ion-buttons>
+      <ion-title>{{post.name}}'s Post Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+      <ion-row>
+          <ion-col size-md='8' class="ion-text-center">
+              <ion-card>
+                  <ion-card-content>
+                      <p class="text">{{post.booked}} Per Hour</p>
+                      <p class="text">{{post.custype}}</p>
+                      <p class="text">{{post.email}}</p>
+                      <p class="text">{{post.intcode}}</p>
+                      <p class="text">{{post.phone}}</p>
+                      <p>Available From: {{post.travelcity}}</p>
+                      <p>Available To: {{post.traveldate | date}}</p>
+                      <p>Available From: {{post.travelcity}}</p>
+                      <p>Available To: {{post.travelfrom}}</p>
+                      <p>Available From: {{post.travelto}}</p>
+                      <p>Available To: {{post.traveldate | date}}</p>
+                      <p class="text">{{post.traveltocity}}</p>
+                  </ion-card-content>
+              </ion-card>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+</ion-content>

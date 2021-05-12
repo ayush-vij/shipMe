@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { PostData } from "../dataplay.model";
-import { DataplayService } from '../dataplay.service';
+import { PostData } from "../../dataplay.model";
+import { DataplayService } from '../../dataplay.service';
 
 @Component({
   selector: 'app-post-details',
@@ -9,7 +9,7 @@ import { DataplayService } from '../dataplay.service';
   styleUrls: ['./post-details.page.scss'],
 })
 export class PostDetailsPage implements OnInit {
-  post: PostData;
+  post: PostData
   id: String;
   constructor(private route: ActivatedRoute, private DataplayService: DataplayService) { }
 
@@ -18,4 +18,6 @@ export class PostDetailsPage implements OnInit {
     console.log(this.id);
     this.post = this.DataplayService.getPostData(this.id);
     console.log(this.post);
-  }}
+  }
+
+}
