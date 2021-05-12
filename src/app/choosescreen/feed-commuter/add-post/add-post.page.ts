@@ -6,6 +6,7 @@ import { User } from '../../../dauth.model';
 import { DataplayService } from '../../dataplay.service'
 import {WindowService} from '../../../service/window.service';
 import { environment } from 'src/environments/environment';
+import {PostData } from '../../dataplay.model'
 
 import * as firebase from 'firebase';
 import { AlertController } from '@ionic/angular';
@@ -28,7 +29,7 @@ export class AddPostPage implements OnInit {
   // SMS AUTHENTICATION
   verificationId: any;
   code: string = "";
-  postdata: import("/Users/mac/D/CSULB/FourthSemester/IS699B_InformationSystemsProject/shipMe/src/app/choosescreen/dataplay.model").PostData[];
+  postdata: PostData[];
 
   constructor(private router: Router, private dataplayService: DataplayService, private http: HttpClient,public windowService : WindowService,
     private alertController: AlertController,) { }
@@ -69,7 +70,6 @@ export class AddPostPage implements OnInit {
 
   }
 
-<<<<<<< HEAD
   sendLoginCode(){
     //Make sure phone number in e164 format
        const num = this.prefix.toString() + this.line.toString();
@@ -97,31 +97,6 @@ export class AddPostPage implements OnInit {
       .catch(err=>{
        console.log('err2',err)
       });}
-=======
-  // sendLoginCode(){
-  //   //Make sure phone number in e164 format
-  //      const num = this.prefix.toString() + this.line.toString();
-  //      const appVerifier=this.windowRef.recaptchaVerifier;
-  //      firebase.auth().signInWithPhoneNumber(num,appVerifier)
-  //      .then(result=>{
-  //      this.windowRef.confirmationResult=result;
-  //      this.otpprompt();
-  //      }).catch(err=>console.log('err1',err))
-  //   }
-
-    // submitVerif(){
-    //  // verifCode = verifCode.toString();
-    //   // console.log(verifCode.value);
-    //   // console.log(typeof(verifCode));
-    //   this.windowRef.confirmationResult.confirm(this.verifCode)
-    //   .then(async (result) =>{
-    //     console.log(result);
-    //     this.onNewPost();
-    //   })
-    //   .catch(err=>{
-    //    console.log('err2',err)
-    //   });}
->>>>>>> 330dfd6dcb62bbfe97f23b152106d56e39c26f16
 
    
   ngOnInit() {
@@ -202,11 +177,7 @@ export class AddPostPage implements OnInit {
           handler: (data: any) => {
             //console.log(data); data variable is the entered value in the field
             data.toString();
-<<<<<<< HEAD
-            this.submitVerif(data.toString());
-=======
             // this.submitVerif();
->>>>>>> 330dfd6dcb62bbfe97f23b152106d56e39c26f16
           }
         }
       ]
