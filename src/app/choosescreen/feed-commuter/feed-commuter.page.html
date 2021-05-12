@@ -65,6 +65,8 @@
                             </ion-refresher-content>
                         </ion-refresher>
                         <ion-grid>
+                          <ion-searchbar placeholder="Search..." [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
+
                             <ion-row *ngIf="!postdata || postdata.length <=0">
                                 <ion-col size-md="6" offset-md="3" class="ion-text-center">
                                     <p>Cannot fetch data! Are you connected?</p>
@@ -73,7 +75,7 @@
 
                             <ion-row *ngIf="postdata && postdata.length > 0">
                                 <ion-col size-md="6" offset-md="3">
-                                    <ion-card *ngFor="let post of postdata; let i=index">
+                                    <ion-card *ngFor="let post of postdata | filter:filterTerm; let i=index ">
                                         <ion-card-header>
                                             <ion-chip>
                                                 <ion-avatar>
@@ -84,8 +86,8 @@
                                         </ion-card-header>
 
                                         <ion-card-content>
-                                            <h5>🛫
-                                                <ion-chip>{{post.travelcity}}, {{post.travelfrom}}</ion-chip>
+                                            <h5>
+                                                <ion-chip>{{post.travelfrom}}</ion-chip>
                                             </h5>
                                             <h5>🛬
                                                 <ion-chip>{{post.traveltocity}}, {{post.travelto}}</ion-chip>
@@ -93,6 +95,9 @@
                                             <h5>📅
                                                 <ion-chip>{{this.datePipe.transform(this.post.traveldate, 'MMM dd, yyyy')}}</ion-chip>
                                             </h5>
+                                            <p class="invisibleText">
+                                              {{post.custype}}
+                                             </p>
                                         </ion-card-content>
 
                                         <ion-card class="Interested-btn" (click)="viewPost(post.id)">

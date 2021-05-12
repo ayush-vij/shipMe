@@ -10,6 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
 import * as firebase from 'firebase';
+
 // import {WindowService} from '../../service/window.service';
 // import { environment } from 'src/environments/environment';
 
@@ -26,7 +27,10 @@ export class FeedCommuterPage {
   prefix:any;
   line:any;
   verifCode:any;
-  // postdata: any;
+
+  // ADDING SEARCH FILTER
+  filterTerm: string;
+  
   constructor(
     // public windowService : WindowService,
     private alertController: AlertController, 
