@@ -75,7 +75,7 @@
 
                             <ion-row *ngIf="postdata && postdata.length > 0">
                                 <ion-col size-md="6" offset-md="3">
-                                    <ion-card *ngFor="let post of postdata | filter:filterTerm; let i=index ">
+                                    <ion-card *ngFor="let post of postdata | filter:filterTerm |filter:customerType; let i=index ">
                                         <ion-card-header>
                                             <ion-chip>
                                                 <ion-avatar>

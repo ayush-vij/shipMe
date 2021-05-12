@@ -30,7 +30,8 @@ export class FeedCommuterPage {
 
   // ADDING SEARCH FILTER
   filterTerm: string;
-  
+  customerType: string = "requester";
+
   constructor(
     // public windowService : WindowService,
     private alertController: AlertController, 
