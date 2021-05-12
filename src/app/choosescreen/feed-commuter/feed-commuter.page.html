@@ -6,13 +6,12 @@
     <ion-title>Requesters</ion-title>
   </ion-toolbar> -->
 </ion-header>
-
-<<<<<<< HEAD <!-- <ion-grid>
+<!-- <ion-grid>
     <ion-row>
         =======
         <!-- <ion-grid> -->
         <!-- <ion-row>
->>>>>>> a176da7f918b97a0d29c687d1a7b7ae683918507
+        a176da7f918b97a0d29c687d1a7b7ae683918507
         <ion-col size='3' style="font-size:0.8em;font-weight:bolder;">
             <strong>
          PRE FIX
@@ -96,7 +95,7 @@
                                             </h5>
                                         </ion-card-content>
 
-                                        <ion-card class="Interested-btn" [routerLink]="['../post-details/'+post.id]">
+                                        <ion-card class="Interested-btn" (click)="viewPost(post.id)">
                                             <ion-card-content>
                                                 <h2 class="ion-text-center Interested-btn-text">Interested!</h2>
                                             </ion-card-content>

@@ -7,7 +7,8 @@ const routes: Routes = [
   {
     path: '',
     component: ChoosescreenPage
-  },  {
+  },
+  {
     path: 'feed-commuter',
     loadChildren: () => import('./feed-commuter/feed-commuter.module').then( m => m.FeedCommuterPageModule)
   },
@@ -15,10 +16,7 @@ const routes: Routes = [
     path: 'feed-orderer',
     loadChildren: () => import('./feed-orderer/feed-orderer.module').then( m => m.FeedOrdererPageModule)
   },
-  {
-    path: 'post-details',
-    loadChildren: () => import('./post-details/post-details.module').then( m => m.PostDetailsPageModule)
-  }
+
 
 ];
 
