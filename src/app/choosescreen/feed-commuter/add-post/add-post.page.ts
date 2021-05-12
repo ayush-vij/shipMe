@@ -24,15 +24,43 @@ export class AddPostPage implements OnInit {
   line:any;
   verifCode:String;
 
+  // SMS AUTHENTICATION
+  verificationId: any;
+  code: string = "";
+
   constructor(private router: Router, private dataplayService: DataplayService, private http: HttpClient,public windowService : WindowService,
     private alertController: AlertController,) { }
+
+
+  // SMS AUTHENTICATION
+  send(){
+    (<any>window).FirebasePlugin.verifyPhoneNumber("+923229853417",60, (credential) => {
+    alert("SMS Sent Successfully");
+    console.log(credential);
+
+    this.verificationId = credential.verificationId;
+  }, (error) => {
+    console.error(error)
+  })
+  }
+
+  verify() {
+    let signInCredential = firebase.auth.PhoneAuthProvider.credential(this.verificationId, this.code)
+
+    firebase.auth().signInWithCredential(signInCredential).then((info) => {
+      console.log(info)
+    }, (error)=>{
+      console.log(error)
+    })
+  }
+
 
 
   async ionViewWillEnter() {
     
     // this.postdata=this.dataplayService.fetchPostData();
     // console.log(this.postdata);
-    firebase.initializeApp(environment.firebase)
+    // firebase.initializeApp(environment.firebase)
     this.windowRef=await this.windowService.windowRef;
     this.windowRef.recaptchaVerifier=await new firebase.auth.RecaptchaVerifier('recaptcha-container');
     await this.windowRef.recaptchaVerifier.render()
@@ -52,9 +80,9 @@ export class AddPostPage implements OnInit {
 
     submitVerif(){
      // verifCode = verifCode.toString();
-      console.log(verifCode.value);
-      console.log(typeof(verifCode));
-      this.windowRef.confirmationResult.confirm(this.otpprompt.data)
+      // console.log(verifCode.value);
+      // console.log(typeof(verifCode));
+      this.windowRef.confirmationResult.confirm(this.verifCode)
       .then(async (result) =>{
         console.log(result);
         this.onNewPost();
@@ -108,6 +136,10 @@ export class AddPostPage implements OnInit {
         validators: [Validators.required, Validators.minLength(9), Validators.maxLength(10)]
       }),
       'traveldate': new FormControl(null,{
+        updateOn: 'blur',
+        validators: [Validators.required]
+      }),
+      'code': new FormControl(null,{
         updateOn: 'blur',
         validators: [Validators.required]
       }),
