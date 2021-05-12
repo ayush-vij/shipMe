@@ -6,6 +6,7 @@ import { User } from '../../../dauth.model';
 import { DataplayService } from '../../dataplay.service'
 import {WindowService} from '../../../service/window.service';
 import { environment } from 'src/environments/environment';
+import {PostData } from '../../dataplay.model'
 
 import * as firebase from 'firebase';
 import { AlertController } from '@ionic/angular';
@@ -23,11 +24,12 @@ export class AddPostPage implements OnInit {
   prefix:any;
   line:any;
   verifCode:String;
+  
 
   // SMS AUTHENTICATION
   verificationId: any;
   code: string = "";
-  postdata: import("/Users/mac/D/CSULB/FourthSemester/IS699B_InformationSystemsProject/shipMe/src/app/choosescreen/dataplay.model").PostData[];
+  postdata: PostData[];
 
   constructor(private router: Router, private dataplayService: DataplayService, private http: HttpClient,public windowService : WindowService,
     private alertController: AlertController,) { }
@@ -68,29 +70,33 @@ export class AddPostPage implements OnInit {
 
   }
 
-  // sendLoginCode(){
-  //   //Make sure phone number in e164 format
-  //      const num = this.prefix.toString() + this.line.toString();
-  //      const appVerifier=this.windowRef.recaptchaVerifier;
-  //      firebase.auth().signInWithPhoneNumber(num,appVerifier)
-  //      .then(result=>{
-  //      this.windowRef.confirmationResult=result;
-  //      this.otpprompt();
-  //      }).catch(err=>console.log('err1',err))
-  //   }
+  sendLoginCode(){
+    //Make sure phone number in e164 format
+       const num = this.prefix.toString() + this.line.toString();
+       const appVerifier=this.windowRef.recaptchaVerifier;
+       firebase.auth().signInWithPhoneNumber(num,appVerifier)
+       .then(result=>{
+       this.windowRef.confirmationResult=result;
+       this.otpprompt();
+       }).catch(err=>console.log('err1',err))
+    }
 
-    // submitVerif(){
-    //  // verifCode = verifCode.toString();
-    //   // console.log(verifCode.value);
-    //   // console.log(typeof(verifCode));
-    //   this.windowRef.confirmationResult.confirm(this.verifCode)
-    //   .then(async (result) =>{
-    //     console.log(result);
-    //     this.onNewPost();
-    //   })
-    //   .catch(err=>{
-    //    console.log('err2',err)
-    //   });}
+    submitVerif(code){
+      var code;
+     // verifCode = verifCode.toString();
+      // console.log(verifCode.value);
+      // console.log(typeof(verifCode));
+
+      this.windowRef.confirmationResult.confirm(code)
+      .then(result=>{
+      this.windowRef.confirmationResult.confirm(this.verifCode)
+      
+        console.log(result);
+        this.onNewPost();
+      })
+      .catch(err=>{
+       console.log('err2',err)
+      });}
 
    
   ngOnInit() {
