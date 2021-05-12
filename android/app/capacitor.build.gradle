@@ -10,9 +10,22 @@ android {
 apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
 
-
+    implementation "com.android.support:support-v4:27.+"
+    implementation "com.google.gms:google-services:+"
+    implementation "com.google.android.gms:play-services-tagmanager:+"
+    implementation "com.google.firebase:firebase-core:+"
+    implementation "com.google.firebase:firebase-messaging:+"
+    implementation "com.google.firebase:firebase-crash:+"
+    implementation "com.google.firebase:firebase-config:+"
+    implementation "com.airbnb.android:lottie:3.5.0"
+    implementation "com.android.support:support-v13:27.+"
+    implementation "me.leolin:ShortcutBadger:1.1.17@aar"
+    implementation "com.google.firebase:firebase-messaging:17.0.+"
 }
-
+apply from: "../../node_modules/cordova-multidex/build.gradle"
+apply from: "../../node_modules/phonegap-plugin-multidex/multidex.gradle"
+apply from: "../../node_modules/cordova-plugin-enable-multidex/src/android/build.gradle"
+apply from: "../../node_modules/cordova-plugin-firebase/src/android/build.gradle"
 
 if (hasProperty('postBuildExtras')) {
   postBuildExtras()
