@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'feed-orderer',
     loadChildren: () => import('./feed-orderer/feed-orderer.module').then( m => m.FeedOrdererPageModule)
+  },
+  {
+    path: 'post-details',
+    loadChildren: () => import('./post-details/post-details.module').then( m => m.PostDetailsPageModule)
   }
 
 ];

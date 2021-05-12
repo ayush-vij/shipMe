@@ -39,7 +39,18 @@ export class FeedCommuterPage {
     private toastController: ToastController,
   ) { }
 
+<<<<<<< HEAD
   
+=======
+    doRefresh(event) {
+      console.log('Refreshing..');
+      this.loadUser();
+      setTimeout(() => {
+        console.log('Refreshed! Data has been updated!');
+        event.target.complete();
+      }, 1000);
+    }
+>>>>>>> a176da7f918b97a0d29c687d1a7b7ae683918507
 
     // async presentToast() {
     //   const toast = await this.toastController.create({
@@ -138,9 +149,9 @@ export class FeedCommuterPage {
             )
           );
         }
-        
       }
-    );
+    )
+    console.log(newData);
     this.http.get('https://postship-2c320-default-rtdb.firebaseio.com/newUser.json')
     .subscribe(
       response => {
@@ -160,6 +171,7 @@ export class FeedCommuterPage {
         
       }
     );
+<<<<<<< HEAD
      return(newVar);
      return(newData);
   }
@@ -172,6 +184,17 @@ export class FeedCommuterPage {
       console.log('Refreshed! Data has been updated!');
       event.target.complete();
     }, 1000);
+=======
+    return(newVar);
+    
+  }
+
+  viewPost(id:String) {
+    console.log("hello");
+    console.log(id);
+    this.router.navigate(['../post-details/'+id]);
+    
+>>>>>>> a176da7f918b97a0d29c687d1a7b7ae683918507
   }
 
 }
