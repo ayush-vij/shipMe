@@ -171,5 +171,12 @@ export class FeedCommuterPage {
     
   }
 
+  viewPost(id:String) {
+    console.log("hello");
+    console.log(id);
+    this.router.navigate(['../post-details/'+id]);
+    
+  }
+
 }
 

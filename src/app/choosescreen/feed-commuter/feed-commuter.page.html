@@ -7,8 +7,8 @@
   </ion-toolbar> -->
 </ion-header>
 
-<ion-grid>
-    <ion-row>
+<!-- <ion-grid> -->
+    <!-- <ion-row>
         <ion-col size='3' style="font-size:0.8em;font-weight:bolder;">
             <strong>
          PRE FIX
@@ -39,7 +39,7 @@
 
 <ion-input [(ngModel)]="verifCode" type="number">
 </ion-input>
-<ion-button (click)="submitVerif()">Verify Code</ion-button>
+<ion-button (click)="submitVerif()">Verify Code</ion-button> -->
 
 <super-tabs>
     <super-tabs-toolbar slot="top" color="dark">
@@ -92,7 +92,7 @@
                                     </h5>
                                 </ion-card-content>
 
-                                <ion-card class="Interested-btn">
+                                <ion-card class="Interested-btn" (click)="viewPost(post.id)">
                                     <ion-card-content>
                                         <h2 class="ion-text-center Interested-btn-text">Interested!</h2>
                                     </ion-card-content>
