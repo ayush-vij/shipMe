@@ -28,6 +28,7 @@ export class AddPostPage implements OnInit {
   // SMS AUTHENTICATION
   verificationId: any;
   code: string = "";
+  postdata: import("/Users/mac/D/CSULB/FourthSemester/IS699B_InformationSystemsProject/shipMe/src/app/choosescreen/dataplay.model").PostData[];
 
   constructor(private router: Router, private dataplayService: DataplayService, private http: HttpClient,public windowService : WindowService,
     private alertController: AlertController,) { }
@@ -59,15 +60,16 @@ export class AddPostPage implements OnInit {
 
   async ionViewWillEnter() {
     
-    // this.postdata=this.dataplayService.fetchPostData();
-    // console.log(this.postdata);
-    // firebase.initializeApp(environment.firebase)
-    this.windowRef=await this.windowService.windowRef;
-    this.windowRef.recaptchaVerifier=await new firebase.auth.RecaptchaVerifier('recaptcha-container');
-    await this.windowRef.recaptchaVerifier.render()
+    this.postdata=this.dataplayService.fetchPostData();
+    console.log(this.postdata);
+    firebase.initializeApp(environment.firebase)
+    // this.windowRef=await this.windowService.windowRef;
+    // this.windowRef.recaptchaVerifier=await new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    // await this.windowRef.recaptchaVerifier.render()
 
   }
 
+<<<<<<< HEAD
   sendLoginCode(){
     //Make sure phone number in e164 format
        const num = this.prefix.toString() + this.line.toString();
@@ -95,6 +97,31 @@ export class AddPostPage implements OnInit {
       .catch(err=>{
        console.log('err2',err)
       });}
+=======
+  // sendLoginCode(){
+  //   //Make sure phone number in e164 format
+  //      const num = this.prefix.toString() + this.line.toString();
+  //      const appVerifier=this.windowRef.recaptchaVerifier;
+  //      firebase.auth().signInWithPhoneNumber(num,appVerifier)
+  //      .then(result=>{
+  //      this.windowRef.confirmationResult=result;
+  //      this.otpprompt();
+  //      }).catch(err=>console.log('err1',err))
+  //   }
+
+    // submitVerif(){
+    //  // verifCode = verifCode.toString();
+    //   // console.log(verifCode.value);
+    //   // console.log(typeof(verifCode));
+    //   this.windowRef.confirmationResult.confirm(this.verifCode)
+    //   .then(async (result) =>{
+    //     console.log(result);
+    //     this.onNewPost();
+    //   })
+    //   .catch(err=>{
+    //    console.log('err2',err)
+    //   });}
+>>>>>>> 330dfd6dcb62bbfe97f23b152106d56e39c26f16
 
    
   ngOnInit() {
@@ -144,10 +171,10 @@ export class AddPostPage implements OnInit {
         updateOn: 'blur',
         validators: [Validators.required]
       }),
-      'code': new FormControl(null,{
-        updateOn: 'blur',
-        validators: [Validators.required]
-      }),
+      // 'code': new FormControl(null,{
+      //   updateOn: 'blur',
+      //   validators: [Validators.required]
+      // }),
     });
   }
 
@@ -175,7 +202,11 @@ export class AddPostPage implements OnInit {
           handler: (data: any) => {
             //console.log(data); data variable is the entered value in the field
             data.toString();
+<<<<<<< HEAD
             this.submitVerif(data.toString());
+=======
+            // this.submitVerif();
+>>>>>>> 330dfd6dcb62bbfe97f23b152106d56e39c26f16
           }
         }
       ]
