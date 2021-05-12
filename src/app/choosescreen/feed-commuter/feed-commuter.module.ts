@@ -23,7 +23,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     FeedCommuterPageRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     SuperTabsModule,
-    Ng2SearchPipeModule,
+     Ng2SearchPipeModule
   ],
   declarations: [FeedCommuterPage]
 })

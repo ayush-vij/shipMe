@@ -1,11 +1,22 @@
 <ion-header class="ion-no-border purple">
-    <!-- <ion-toolbar color="dark">
+    <ion-toolbar color="dark">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Requesters</ion-title>
-  </ion-toolbar> -->
+    <ion-title>Viewing Posts Requester</ion-title>
+  </ion-toolbar>
 </ion-header>
+<super-tabs>
+  <super-tabs-toolbar slot="top" color="dark">
+    <super-tab-button>
+      <ion-icon color="light" name="newspaper-sharp"></ion-icon>
+      <ion-label color="light">Requester's Feed</ion-label>
+    </super-tab-button>
+    <super-tab-button>
+      <ion-icon color="light" name="bookmarks-sharp"></ion-icon>
+      <ion-label color="light">My Posts</ion-label>
+    </super-tab-button>
+  </super-tabs-toolbar>
 <!-- <ion-grid>
     <ion-row>
         =======
@@ -45,18 +56,6 @@
 <ion-button (click)="submitVerif()">Verify Code</ion-button> -->
 
         <super-tabs>
-            <super-tabs-toolbar slot="top" color="dark">
-                <super-tab-button>
-                    <!-- <ion-icon color="light" name="newspaper-sharp"></ion-icon> -->
-                    <ion-label color="light">Feed</ion-label>
-                </super-tab-button>
-                <super-tab-button>
-                    <!-- <ion-icon color="light" name="bookmarks-sharp"></ion-icon> -->
-                    <ion-label color="light">My posts</ion-label>
-                </super-tab-button>
-            </super-tabs-toolbar>
-
-
             <super-tabs-container>
                 <super-tab>
                     <ion-content class="ion-padding">
@@ -86,7 +85,7 @@
                                         </ion-card-header>
 
                                         <ion-card-content>
-                                            <h5>
+                                            <h5>🛫
                                                 <ion-chip>{{post.travelfrom}}</ion-chip>
                                             </h5>
                                             <h5>🛬
