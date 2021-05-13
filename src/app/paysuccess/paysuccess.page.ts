@@ -17,4 +17,8 @@ recd(){
 feed(){
   this.router.navigate(['./payforward']);
 }
+
+comfeed(){
+  this.router.navigate(['./choosescreen/feed-orderer']);
+}
 }
