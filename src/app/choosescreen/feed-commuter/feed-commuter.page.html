@@ -1,11 +1,25 @@
-<ion-header class="ion-no-border purple">
-    <ion-toolbar color="dark">
-        <!-- <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
-        </ion-buttons> -->
-        <ion-title>Viewing Posts Requester</ion-title>
-    </ion-toolbar>
+<ion-header class="ion-no-border purple header">
+  <ion-toolbar  color="dark">
+      <!-- <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+    </ion-buttons> -->
+      <ion-grid>
+          <ion-row class="header">
+              <ion-col style="align-items: center;">
+                  <h4 class="header-heading">Viewing Posts as Requester</h4>
+              </ion-col>
+              <ion-col>
+                  <ion-card class="locard" (click)="logoutnow()">
+                      <center>
+                          <p>LOGOUT</p>
+                      </center>
+                  </ion-card>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+  </ion-toolbar>
 </ion-header>
+<super-tabs>
 <super-tabs>
     <super-tabs-toolbar slot="top" color="dark">
         <super-tab-button>

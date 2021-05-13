@@ -1,3 +1,15 @@
+.header {
+  height: 4em;
+
+}
+
+.header-heading {
+  font-size: 15px;
+  padding-left: 10px;
+  font-weight: bolder;
+  color: white;
+}
+
 #bookmark {
     width: 100%;
     height: 10vw;
@@ -18,9 +30,12 @@
 }
 
 .locard {
-    background-color: orange;
+    background-color: rgb(214, 146, 20);
     font-weight: bolder;
     color: white;
+    width: 5em;
+    left: 7.5em;
+    bottom: 0.5em;
 }
 
 .Delete-btn {
