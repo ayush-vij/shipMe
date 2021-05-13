@@ -54,6 +54,10 @@ export class FeedAdminPage {
     commfun(){
       this.router.navigate(['../choosescreen/feed-commuter']);
     }
+
+    logoutnow(){
+      this.router.navigate(['../../home']);
+    }
   
     ordfun(){
       this.router.navigate(['../choosescreen/feed-orderer']);
