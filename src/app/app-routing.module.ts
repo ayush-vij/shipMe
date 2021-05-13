@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./choosescreen/feed-commuter/feed-commuter.module').then( m => m.FeedCommuterPageModule)
+    loadChildren: () => import('../app/home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'login',
