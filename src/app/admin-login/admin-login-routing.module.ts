@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: AdminLoginPage
-  }
+  },
+  // {
+  //   path: 'cs',
+  //   loadChildren: () => import('./choosescreen/choosescreen.module').then( m => m.ChoosescreenPageModule)
+  // },
 ];
 
 @NgModule({

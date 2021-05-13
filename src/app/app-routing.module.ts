@@ -44,6 +44,11 @@ const routes: Routes = [
     path: 'payprocess',
     loadChildren: () => import('./payprocess/payprocess.module').then( m => m.PayprocessPageModule)
   },
+  // {
+  //   path: 'majorfeed',
+  //   loadChildren: () => import('./admin-login/majorfeed/majorfeed.module').then( m => m.MajorfeedPageModule)
+  // },
+
 
 
 ];
