@@ -1,22 +1,36 @@
-<ion-header class="ion-no-border purple">
-    <ion-toolbar color="dark">
-        <!-- <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
-        </ion-buttons> -->
-        <ion-title>Viewing Posts Requester</ion-title>
-    </ion-toolbar>
+<ion-header class="ion-no-border purple header">
+  <ion-toolbar style="--ion-color-base: #390d3f !important"  color="dark">
+      <!-- <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+    </ion-buttons> -->
+      <ion-grid>
+          <ion-row class="header">
+              <ion-col style="align-items: center;">
+                  <h4 class="header-heading">Viewing Posts as Commuter</h4>
+              </ion-col>
+              <ion-col>
+                  <ion-card class="locard" (click)="logoutnow()">
+                      <center>
+                          <p>LOGOUT</p>
+                      </center>
+                  </ion-card>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+  </ion-toolbar>
 </ion-header>
 <super-tabs>
-    <super-tabs-toolbar slot="top" color="dark">
-        <super-tab-button>
-            <ion-icon color="light" name="newspaper-sharp"></ion-icon>
-            <ion-label color="light">Commuter's Feed</ion-label>
-        </super-tab-button>
-        <super-tab-button>
-            <ion-icon color="light" name="bookmarks-sharp"></ion-icon>
-            <ion-label color="light">My Posts</ion-label>
-        </super-tab-button>
-    </super-tabs-toolbar>
+<super-tabs>
+  <super-tabs-toolbar style="--ion-color-base: #390d3f !important" slot="top" color="dark">
+    <super-tab-button  >
+        <ion-icon  color="dark" name="newspaper-outline"></ion-icon>
+        <ion-label style="color: white;">Requester's Feed</ion-label>
+    </super-tab-button  >
+    <super-tab-button>
+        <ion-icon color="dark" name="bookmarks-outline"></ion-icon>
+        <ion-label style="color: white;" color="light">My Orders</ion-label>
+    </super-tab-button>
+</super-tabs-toolbar>
     <!-- <ion-grid>
   <ion-row>
       =======
@@ -276,12 +290,90 @@
   </ion-card>
    -->
                 <!-- <ion-content>Requests</ion-content> -->
-            </super-tab>
-            <super-tab>
-                <ion-content>My posts</ion-content>
-            </super-tab>
-        </super-tabs-container>
-    </super-tabs>
+              </super-tab>
+              <super-tab>
+                <ion-content class="ion-padding">
+                  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+                      <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+                      </ion-refresher-content>
+                  </ion-refresher>
+                  <ion-grid>
+                      <ion-searchbar placeholder="Search..." [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
+  
+                      <ion-row *ngIf="!postdata || postdata.length <=0">
+                          <ion-col size-md="6" offset-md="3" class="ion-text-center">
+                              <p>Cannot fetch data! Are you connected?</p>
+                          </ion-col>
+                      </ion-row>
+  
+                      <ion-row *ngIf="postdata && postdata.length > 0">
+                          <ion-col size-md="6" offset-md="3">
+                              <ion-card (click)="viewPost(post.id)" *ngFor="let post of postdata | filter:filterTerm |filter:customerType; let i=index ">
+                                  <ion-card-header>
+                                      <ion-chip>
+                                          <ion-avatar>
+                                              <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/d5a93f8831033.5602c8b6a30f4.jpg">
+                                          </ion-avatar>
+                                          <ion-label>{{post.id}}</ion-label>
+                                      </ion-chip>
+                                  </ion-card-header>
+  
+                                  <ion-card-content>
+                                      <h5>🛫
+                                          <ion-chip>{{post.travelfrom}}</ion-chip>
+                                      </h5>
+                                      <h5>🛬
+                                          <ion-chip>{{post.traveltocity}}, {{post.travelto}}</ion-chip>
+                                      </h5>
+                                      <h5>📅
+                                          <ion-chip>{{this.datePipe.transform(this.post.traveldate, 'MMM dd, yyyy')}}</ion-chip>
+                                      </h5>
+                                      <p class="invisibleText">
+                                          {{post.custype}}
+                                      </p>
+                                  </ion-card-content>
+  
+                              </ion-card>
+  
+                              <!-- <ion-item-options side="end">
+                <ion-item-option color="danger" (click)="onRemoveReqs(reqs.id)">
+                  <ion-icon name="trash" slot="icon-only"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+            </ion-item-sliding> -->
+  
+                              <!-- <ion-card *ngFor="let post of postdata; let i=index">
+              <ion-card-header>
+                <ion-chip>
+                  <ion-avatar>
+                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/d5a93f8831033.5602c8b6a30f4.jpg">
+                  </ion-avatar>
+                  <ion-label>Name User</ion-label>
+                </ion-chip>
+              </ion-card-header>
+            
+              <ion-card-content>
+                <p>Ayush is travelling from 🛫 <b>{{post.travelcity}}, {{post.travelfrom}}</b> to 🛬 <b>{{post.traveltocity}}, {{post.travelto}}</b> on <b>{{post.traveldate}}</b>. 
+                <h3><ion-chip>{{post.email}}</ion-chip></h3>
+              </ion-card-content>
+            
+            <ion-card>
+              <ion-card-content>
+                <h5 class="ion-text-center">Interested!</h5>
+              </ion-card-content>
+            </ion-card>
+            </ion-card> -->
+  
+  
+                          </ion-col>
+                      </ion-row>
+                  </ion-grid>
+  
+              </ion-content>
+              </super-tab>
+          </super-tabs-container>
+      </super-tabs>
+  
 
     <ion-fab vertical="bottom" horizontal="center" slot="fixed" (click)="add()">
         <ion-fab-button>
