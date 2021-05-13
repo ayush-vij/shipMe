@@ -14,4 +14,7 @@ export class PaysuccessPage implements OnInit {
 recd(){
   this.router.navigate(['./payprocess']);
 }
+feed(){
+  this.router.navigate(['./payforward']);
+}
 }

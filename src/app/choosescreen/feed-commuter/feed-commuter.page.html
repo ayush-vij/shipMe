@@ -145,7 +145,13 @@
                         </ion-row>
                     </ion-grid>
 
-                    <button type="submit" (click)="loadUser()">Reg details retrival button</button>
+                    <!-- <button type="submit" (click)="loadUser()">Reg details retrival button</button> -->
+
+                    <ion-fab vertical="bottom" horizontal="center" slot="fixed" (click)="add()">
+                        <ion-fab-button>
+                            <ion-icon name="add"></ion-icon>
+                        </ion-fab-button>
+                    </ion-fab>
                 </ion-content>
 
 
@@ -280,6 +286,7 @@
             </super-tab>
         </super-tabs-container>
     </super-tabs>
+
 
     <ion-fab vertical="bottom" horizontal="center" slot="fixed" (click)="add()">
         <ion-fab-button>

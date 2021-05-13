@@ -47,6 +47,10 @@ const routes: Routes = [
     path: 'paysuccess',
     loadChildren: () => import('./paysuccess/paysuccess.module').then( m => m.PaysuccessPageModule)
   },
+  {
+    path: 'payforward',
+    loadChildren: () => import('./payforward/payforward.module').then( m => m.PayforwardPageModule)
+  },
 
   // {
   //   path: 'majorfeed',
