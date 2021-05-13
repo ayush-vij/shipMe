@@ -1,6 +1,7 @@
 export class PostData{
   constructor(
       public id: string,
+      public name: string,
       public custype: string,
       public travelfrom: string,
       public travelcity: string,
@@ -8,6 +9,8 @@ export class PostData{
       public traveltocity: string,
       public booked: string,
       public email: string,
+      public intcode: string,
+      public phone: number,
       public traveldate: Date,
       ){}
 }

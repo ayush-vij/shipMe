@@ -29,6 +29,7 @@ export class DataplayService {
 
   
   newPostData(
+    name: string,
     custype: string,
     travelfrom: string,
     travelcity: string,
@@ -36,10 +37,13 @@ export class DataplayService {
     traveltocity: string,
     booked: string,
     email: string,
+    intcode: string,
+    phone: number,
     traveldate: Date
   ) {
     const newPostData = new PostData(
       Math.random().toString(),
+      name,
       custype,
       travelfrom,
       travelcity,
@@ -47,6 +51,8 @@ export class DataplayService {
       traveltocity,
       booked,
       email,
+      intcode,
+      phone,
       traveldate,
     );
     this.http
@@ -74,6 +80,7 @@ export class DataplayService {
           postdata.push(
             new PostData(
               key,
+              response[key].name,
               response[key].custype,
               response[key].travelfrom,
               response[key].travelcity,
@@ -81,6 +88,8 @@ export class DataplayService {
               response[key].traveltocity,
               response[key].booked,
               response[key].email,
+              response[key].intcode,
+              response[key].phone,
               new Date(response[key].traveldate)
             )
           );
@@ -93,6 +102,31 @@ export class DataplayService {
   getPostData(id: String) {
     return { ...this._postdata.find((p) => p.id === id) };
   }
+
+  fetchUser(){
+    var newVar: User[]=[];
+    this.http.get('https://postship-2c320-default-rtdb.firebaseio.com/newUser.json')
+    .subscribe(
+      response => {
+        for (const key in response){
+          newVar.push(
+            new User(
+              key,
+              response[key].fname,
+              response[key].email,
+              response[key].pwd,
+            )
+          );
+          const name = response[key].fname;
+          console.log("Name: " +response[key].fname);
+          console.log("Email: " +response[key].email);
+          console.log("Password: " +response[key].pwd);
+        }
+        
+      }
+    );
+    return(newVar);    
+    }
 
   removePostData(id: string) {
     this.http

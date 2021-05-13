@@ -18,6 +18,7 @@ import { ToastController } from '@ionic/angular';
 
 // import { Camera, CameraOptions } from '@ionic-native/core/decorators/cordova';
 import { CameraOptions, CameraSource } from '@capacitor/core';
+import { DAuthService } from '../dauth.service';
 
 import { Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
@@ -34,7 +35,7 @@ export interface imgFile {
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-export class RegisterPage {
+export class RegisterPage implements OnInit {
   // form: FormGroup;
   tabBarElement: any;
   splash = true;
@@ -43,6 +44,8 @@ export class RegisterPage {
   email: string;
   password: string;
   repassword: string;
+  form: FormGroup;
+
 
   // File upload task 
   fileUploadTask: AngularFireUploadTask;
@@ -84,6 +87,7 @@ export class RegisterPage {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public authService: AuthService,
+    private dauth: DAuthService,
     public toastController: ToastController,
     private afs: AngularFirestore,
     private afStorage: AngularFireStorage,
@@ -115,113 +119,94 @@ export class RegisterPage {
 
   /////////////////////////////////
 
-  pwcheck(){
-    if (this.password == this.repassword){
-      this.signup();
-    }
-    else{
-      this.resetpw();
-      this.pwerror();
-    }
-  }
+ 
 
+  ///////////////////////////
   
-    
-  signup() {
-    //this.authService.signup(this.fname, this.email, this.password, this.repassword);
-    this.authService.signup(this.email, this.password);
-    this.email = this.password = '';
-  }
-  
-  login() {
-    this.authService.login(this.email, this.password);
-    this.email = this.password = '';   
-  }
-  logsout() {
-    this.authService.logout();
-  }
-  
-  ionViewWillEnter() {
-      this.firebaseAuth.signOut();
-  }
 
-  async pwerror() {
-    const toast = await this.toastController.create({
-      message: 'The passwords do not match, please try again!',
-      duration: 4000
+  ngOnInit() {
+    this.form = new FormGroup({
+      // 'pp': new FormControl(null,{
+      //   updateOn: 'blur',
+      // //  validators: [Validators.required]
+      // }),
+      'fname': new FormControl(null,{
+        updateOn: 'blur',
+        validators: [Validators.required]
+      }),
+      'email': new FormControl(null,{
+        updateOn: 'blur',
+        validators: [Validators.required, Validators.minLength(2)]
+      }),
+      'password': new FormControl(null,{
+        updateOn: 'blur',
+        validators: [Validators.required]
+      }),
+      'repassword': new FormControl(null,{
+        updateOn: 'blur',
+        validators: [Validators.required]
+      }),
     });
-    toast.present();
   }
 
-  resetpw(){
-    this.password = null;
-    this.repassword = null;
+  onNewPost(){
+    console.log(this.form);
+    this.dauth.newUser(
+      //this.form.value.pp,
+      this.form.value.fname,
+      this.form.value.email,
+      this.form.value.password,
+      this.form.value.repassword,
+    );
+    this.form.reset();
   }
 
-  NaviateToLogIn() {
-    this.router.navigate(['../login']); 
+pwcheck(){
+   console.log(this.form.value.email);
+   console.log(this.form.value.password);
+  if (this.form.value.password == this.form.value.repassword){
+    this.signup();
   }
-  
-
-//   uploadImage(event: FileList) {
-      
-//     const file = event.item(0)
-
-//     // Image validation
-//     if (file.type.split('/')[0] !== 'image') { 
-//       console.log('File type is not supported!')
-//       return;
-//     }
-
-//     this.isFileUploading = true;
-//     this.isFileUploaded = false;
-
-//     this.imgName = file.name;
-
-//     // Storage path
-//     const fileStoragePath = `filesStorage/${new Date().getTime()}_${file.name}`;
-
-//     // Image reference
-//     const imageRef = this.afStorage.ref(fileStoragePath);
-
-//     // File upload task
-//     this.fileUploadTask = this.afStorage.upload(fileStoragePath, file);
-
-//     // Show uploading progress
-//     this.percentageVal = this.fileUploadTask.percentageChanges();
-//     this.trackSnapshot = this.fileUploadTask.snapshotChanges().pipe(
-      
-//       finalize(() => {
-//         // Retreive uploaded image storage path
-//         this.UploadedImageURL = imageRef.getDownloadURL();
-        
-//         this.UploadedImageURL.subscribe(resp=>{
-//           this.storeFilesFirebase({
-//             name: file.name,
-//             filepath: resp,
-//             size: this.imgSize
-//           });
-//           this.isFileUploading = false;
-//           this.isFileUploaded = true;
-//         },error=>{
-//           console.log(error);
-//         })
-//       }),
-//       tap(snap => {
-//           this.imgSize = snap.totalBytes;
-//       })
-//     )
-// }
-
-
-// storeFilesFirebase(image: imgFile) {
-//     const fileId = this.afs.createId();
-    
-//     this.filesCollection.doc(fileId).set(image).then(res => {
-//       console.log(res);
-//     }).catch(err => {
-//       console.log(err);
-//     });
-// }
-
+  else{
+    this.resetpw();
+    this.pwerror();
+  }
 }
+  
+signup() {
+  //this.authService.signup(this.fname, this.email, this.password, this.repassword);
+  this.authService.signup(this.form.value.email, this.form.value.password);
+  this.onNewPost();
+  this.form.value.email = this.form.value.password = '';
+  
+}
+
+login() {
+  this.authService.login(this.email, this.password);
+  this.email = this.password = '';   
+}
+logsout() {
+  this.authService.logout();
+}
+
+ionViewWillEnter() {
+    this.firebaseAuth.signOut();
+}
+
+async pwerror() {
+  const toast = await this.toastController.create({
+    message: 'The passwords do not match, please try again!',
+    duration: 4000
+  });
+  toast.present();
+}
+
+resetpw(){
+  this.password = null;
+  this.repassword = null;
+}
+
+NaviateToLogIn() {
+  this.router.navigate(['../login']); 
+}}
+  ////////////////////////

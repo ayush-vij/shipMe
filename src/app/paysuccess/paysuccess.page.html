@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title></ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <center>
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_btrz2de7.json" background="transparent" speed="1" style="width: 300px; height: 300px;" autoplay></lottie-player>
+        <h2>Payment successful</h2><br><br>
+        <ion-card class="recdbtn" (click)="feed()">
+            <p><b>I RECEIVED MY ITEM</b></p>
+        </ion-card><br>
+        <ion-card class="feedbtn" (click)="comfeed()">
+            <p><b>GO BACK TO THE FEED</b></p>
+        </ion-card><br>
+        <h3>What happens next?</h3>
+    </center>
+    <ion-card>
+        <p>We will hold the payment that you made.</p>
+    </ion-card>
+    <ion-card>
+        <p>As soon as you hit the <b>'I received my item'</b> button, we will transfer the payment to the commuter.</p>
+    </ion-card>
+
+</ion-content>

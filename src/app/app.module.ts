@@ -24,7 +24,19 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
 import { DAuthService } from './dauth.service';
 import { environment } from 'src/environments/environment';
+import * as firebase from 'firebase';
+import { Firebase  } from '@ionic-native/firebase';
 
+firebase.initializeApp({
+  apiKey: "AIzaSyCRqbNvvvm-L3jfTHh8WmcJCbyneh7yHMo",
+    authDomain: "postship-2c320.firebaseapp.com",
+    databaseURL: "https://postship-2c320-default-rtdb.firebaseio.com",
+    projectId: "postship-2c320",
+    storageBucket: "postship-2c320.appspot.com",
+    messagingSenderId: "616220357262",
+    appId: "1:616220357262:web:d6c1e4eb8159903afa0fdf",
+    measurementId: "G-LD2YLVPGQX"
+})
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +44,7 @@ import { environment } from 'src/environments/environment';
   imports: [
     AngularFirestoreModule,
     AngularFireStorageModule,
+    // firebase.initialiseApp(environment.firebase),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     FormsModule,
@@ -51,4 +64,7 @@ import { environment } from 'src/environments/environment';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+
+  
+}

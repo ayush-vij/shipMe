@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button Href="../feed-commuter"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{post.name}}'s Post Details</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-grid>
+        <ion-row>
+            <ion-col size-md='8'>
+                <ion-card>
+                    <ion-card-content>
+                        <p>Did {{post.name}} book his tickets: <b>{{post.booked}}</b></p><br>
+                        <p>Their email address is, <b><a href="mailto:{{post.email}}">{{post.email}}</a></b> and can be contacted on phone at <a href="tel:{{post.intcode}}{{post.phone}">{{post.intcode}}-{{post.phone}}</a></p>
+                        <p>They are travelling from <b>{{post.travelcity}}, {{post.travelfrom}} to {{post.traveltocity}}, {{post.travelto}}</b> on <b>{{post.traveldate | date}}</b></p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-card>
+                    <ion-card-content>
+                        <h3>Please do not make any payments outside shipMe as it may result in a fraud.</h3>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-card class="paycard" (click)="paynow()">
+                    <ion-card-content>
+                        <h3 class="paypaypay">START PAYMENT</h3>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

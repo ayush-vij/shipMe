@@ -9,13 +9,21 @@ import { FeedCommuterPageRoutingModule } from './feed-commuter-routing.module';
 import { FeedCommuterPage } from './feed-commuter.page';
 import { SuperTabsModule } from '@ionic-super-tabs/angular';
 
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
+
+// ADDING SEARCH FILTER
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     FeedCommuterPageRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
     SuperTabsModule,
+     Ng2SearchPipeModule
   ],
   declarations: [FeedCommuterPage]
 })

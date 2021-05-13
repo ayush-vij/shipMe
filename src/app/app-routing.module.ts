@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('../app/home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'login',
@@ -35,14 +35,28 @@ const routes: Routes = [
   {
     path: 'admin-login',
     loadChildren: () => import('./admin-login/admin-login.module').then( m => m.AdminLoginPageModule)
-  },  {
+  },
+  {
     path: 'contact',
     loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule)
   },
   {
     path: 'payprocess',
     loadChildren: () => import('./payprocess/payprocess.module').then( m => m.PayprocessPageModule)
+  },  {
+    path: 'paysuccess',
+    loadChildren: () => import('./paysuccess/paysuccess.module').then( m => m.PaysuccessPageModule)
   },
+  {
+    path: 'payforward',
+    loadChildren: () => import('./payforward/payforward.module').then( m => m.PayforwardPageModule)
+  },
+
+  // {
+  //   path: 'majorfeed',
+  //   loadChildren: () => import('./admin-login/majorfeed/majorfeed.module').then( m => m.MajorfeedPageModule)
+  // },
+
 
 
 ];
