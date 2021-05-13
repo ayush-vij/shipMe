@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { RegisterPageRoutingModule } from './register-routing.module';
 
 import { RegisterPage } from './register.page';
-
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { FormatFileSizePipe } from './format-file-size.pipe';
 
@@ -19,6 +19,9 @@ import { FormatFileSizePipe } from './format-file-size.pipe';
     ReactiveFormsModule,
     IonicModule,
     RegisterPageRoutingModule
+  ],
+  schemas: [
+NO_ERRORS_SCHEMA,
   ],
   declarations: [RegisterPage, FormatFileSizePipe]
 })

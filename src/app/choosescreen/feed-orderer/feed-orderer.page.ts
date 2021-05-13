@@ -35,7 +35,7 @@ export class FeedOrdererPage{
     private router: Router, 
     private dataplayService: DataplayService,
     private actionSheetController: ActionSheetController,
-    private datePipe: DatePipe,
+    public datePipe: DatePipe,
     private authService: DAuthService,
     private http: HttpClient,
     private toastController: ToastController,
@@ -52,6 +52,10 @@ export class FeedOrdererPage{
 
     commfun(){
       this.router.navigate(['../choosescreen/feed-commuter']);
+    }
+    
+    aurji(){
+      this.router.navigate(['../../home']);
     }
   
     ordfun(){
