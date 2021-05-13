@@ -41,7 +41,7 @@ export class FeedCommuterPage implements OnInit{
     private route: ActivatedRoute,
     private dataplayService: DataplayService,
     private actionSheetController: ActionSheetController,
-    private datePipe: DatePipe,
+    public datePipe: DatePipe,
     private authService: DAuthService,
     private http: HttpClient,
     private toastController: ToastController,
@@ -63,6 +63,10 @@ export class FeedCommuterPage implements OnInit{
         console.log('Refreshed! Data has been updated!');
         event.target.complete();
       }, 1000);
+    }
+    
+    aurji(){
+      this.router.navigate(['../../home']);
     }
 
     commfun(){

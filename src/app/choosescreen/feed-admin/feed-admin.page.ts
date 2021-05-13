@@ -36,7 +36,7 @@ export class FeedAdminPage {
     private router: Router, 
     private dataplayService: DataplayService,
     private actionSheetController: ActionSheetController,
-    private datePipe: DatePipe,
+    public datePipe: DatePipe,
     private authService: DAuthService,
     private http: HttpClient,
     private toastController: ToastController,
