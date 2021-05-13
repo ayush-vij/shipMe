@@ -54,18 +54,27 @@ signup() {
   this.authService.signup(this.email, this.password);
   this.email = this.password = '';
 }
-
+andar(){
+  if(this.email == "1910"){
+    this.router.navigate(['../choosescreen/']);
+  }
+  else{
+    console.log('Maza nahi aaya!');
+  }
+}
 login() {
   this.authService.login(this.email, this.password);
   this.email = this.password = '';   
-  this.router.navigate(['../choosescreen/']); 
+  // this.router.navigate(['../admin-login/choosescreen/']); 
+  this.router.navigate(['/majorfeed']);
 }
 logsout() {
   this.authService.logout();
 }
 
 ionViewWillEnter() {
-    this.firebaseAuth.signOut();
+    //this.firebaseAuth.signOut();
+    this.router.navigate(['./admin-login/']);
 }
 
 NaviateToSignUp() {
