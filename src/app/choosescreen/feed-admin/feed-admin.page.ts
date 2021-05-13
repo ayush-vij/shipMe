@@ -182,11 +182,18 @@ export class FeedAdminPage {
     
   }
 
+  // VIEW DETAILS OF A POST
   viewPost(id:String) {
     console.log("AAEEEEEEE");
     console.log(id);
     this.router.navigate(['/choosescreen/feed-commuter/post-details/'+id]);
-    
+  }
+
+  // REMOVE A POST
+  deletePost(id: string){
+    this.dataplayService.removePostData(id);
+    this.postdata = this.dataplayService.posts;
+    console.log("Removed")
   }
 
 }

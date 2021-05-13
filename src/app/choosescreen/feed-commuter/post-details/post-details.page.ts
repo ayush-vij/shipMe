@@ -15,7 +15,7 @@ export class PostDetailsPage implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-    console.log(this.id);
+    console.log(this.id + " Janu sun zara");
     this.post = this.DataplayService.getPostData(this.id);
     console.log(this.post);
   }

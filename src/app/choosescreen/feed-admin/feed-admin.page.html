@@ -78,7 +78,7 @@
 
                       <ion-row *ngIf="postdata && postdata.length > 0">
                           <ion-col size-md="6" offset-md="3">
-                              <ion-card *ngFor="let post of postdata | filter:filterTerm |filter:customerType; let i=index ">
+                              <ion-card *ngFor="let post of postdata | filter:filterTerm; let i=index ">
                                   <ion-card-header>
                                       <ion-chip>
                                           <ion-avatar>
@@ -105,9 +105,14 @@
 
                                   <ion-card class="Interested-btn" (click)="viewPost(post.id)">
                                       <ion-card-content>
-                                          <h2 class="ion-text-center Interested-btn-text">Interested!</h2>
+                                          <h2 class="ion-text-center Interested-btn-text">INTERESTED</h2>
                                       </ion-card-content>
                                   </ion-card>
+                                  <ion-card class="Delete-btn" (click)="deletePost(post.id)">
+                                    <ion-card-content>
+                                        <h2 class="ion-text-center Interested-btn-text">DELETE</h2>
+                                    </ion-card-content>
+                                </ion-card>
 
                               </ion-card>
 
