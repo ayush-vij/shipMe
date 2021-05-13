@@ -50,6 +50,14 @@ export class FeedOrdererPage{
       }, 1000);
     }
 
+    commfun(){
+      this.router.navigate(['../choosescreen/feed-commuter']);
+    }
+  
+    ordfun(){
+      this.router.navigate(['../choosescreen/feed-orderer']);
+    }
+
     // async presentToast() {
     //   const toast = await this.toastController.create({
     //     message: 'The post has been saved.',
