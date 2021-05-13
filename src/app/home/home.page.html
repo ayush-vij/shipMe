@@ -1,16 +1,24 @@
-<div [routerLink]="['/admin-login']" class="admin-login" >
-      <p>&nbsp;</p>
+<div [routerLink]="['/admin-login']" class="admin-login">
+    <p>&nbsp;</p>
 </div>
 <ion-content class="auth-form ion-padding">
-      <div>
+    <div>
         <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-        <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_uhIxIg.json"  background="transparent"  speed="1"  style="width: 85vw; height: 70vw; padding-left: 5vw;"    autoplay></lottie-player>
-      </div>
-        <ion-button class="height" [routerLink]="['/register']" expand="block" color="primary"><p class="font-size">Register</p></ion-button>
+        <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_uhIxIg.json" background="transparent" speed="1" style="width: 85vw; height: 70vw; padding-left: 5vw;" autoplay></lottie-player>
+    </div>
+    <ion-button class="height" [routerLink]="['/register']" expand="block" color="primary">
+        <p class="font-size">Register</p>
+    </ion-button>
 
-        <div class="divider line one-line"><p class="font-size">or</p></div>
+    <div class="divider line one-line">
+        <p class="font-size">or</p>
+    </div>
 
-        <div class="already"><p class="font-size">Already a user?</p></div>
+    <div class="already">
+        <p class="font-size">Already a user?</p>
+    </div>
 
-        <ion-button class="height" [routerLink]="['/login']" expand="block" color="secondary"><p class="font-size">Sign In</p></ion-button>
+    <ion-button class="height" [routerLink]="['/login']" expand="block" color="secondary">
+        <p class="font-size">Sign In</p>
+    </ion-button>
 </ion-content>
