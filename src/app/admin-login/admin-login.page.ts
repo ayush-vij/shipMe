@@ -56,7 +56,7 @@ signup() {
 }
 andar(){
   if(this.email == "1910"){
-    this.router.navigate(['../choosescreen/']);
+    this.router.navigate(['../choosescreen/feed-admin/']);
   }
   else{
     console.log('Maza nahi aaya!');

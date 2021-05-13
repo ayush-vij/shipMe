@@ -1,0 +1,62 @@
+#bookmark {
+  width: 100%;
+  height: 10vw;
+}
+
+#bookmark-btn {
+  top: 10vw;
+}
+
+.Interested-btn {
+  background-color: rgb(50, 119, 50);
+  // background-color: limegreen;
+}
+
+.Interested-btn-text {
+  color: white;
+  font-weight: bolder;
+}
+
+.Delete-btn {
+  background-color: rgb(163, 29, 29);
+  // background-color: limegreen;
+}
+
+.purple {
+  background-color: purple !important;
+}
+
+.invisibleText {
+  color: black;
+  font-size: 0.1px;
+}
+
+.card1 {
+  height: 50%;
+  // width: 100%;
+  background-color: #fa6b0b;
+  color: black;
+  // font-family: segoetitle;
+  // font-size: larger;
+}
+
+.card2 {
+  height: 50%;
+  // width: 100%;
+  background-color: green;
+  color: black;
+  // font-family: segoetitle;
+  // font-size: larger;
+}
+
+.title {
+  text-align: center;
+  font-size: 4vw;
+  font-weight: bolder;
+  // padding-top: 20vw;
+}
+
+.content {
+  text-align: center;
+  font-size: 3vw;
+}
