@@ -12,6 +12,9 @@ import { SuperTabsModule } from '@ionic-super-tabs/angular';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 
+// ADDING SEARCH FILTER
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -20,6 +23,7 @@ import { AngularFireModule } from '@angular/fire';
     FeedCommuterPageRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     SuperTabsModule,
+     Ng2SearchPipeModule
   ],
   declarations: [FeedCommuterPage]
 })
