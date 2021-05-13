@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-payprocess',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PayprocessPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    setTimeout(() => this.router.navigate(['../paysuccess']), 5000);
+    
   }
 
 }
