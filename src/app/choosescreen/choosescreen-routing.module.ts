@@ -15,7 +15,11 @@ const routes: Routes = [
   {
     path: 'feed-orderer',
     loadChildren: () => import('./feed-orderer/feed-orderer.module').then( m => m.FeedOrdererPageModule)
+  },  {
+    path: 'feed-admin',
+    loadChildren: () => import('./feed-admin/feed-admin.module').then( m => m.FeedAdminPageModule)
   },
+
 
 
 
