@@ -14,4 +14,11 @@ export class PaysuccessPage implements OnInit {
 recd(){
   this.router.navigate(['./payprocess']);
 }
+feed(){
+  this.router.navigate(['./payforward']);
+}
+
+comfeed(){
+  this.router.navigate(['./choosescreen/feed-orderer']);
+}
 }
