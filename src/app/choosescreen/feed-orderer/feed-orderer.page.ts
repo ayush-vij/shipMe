@@ -50,6 +50,10 @@ export class FeedOrdererPage{
       }, 1000);
     }
 
+    pays(){
+      this.router.navigate(['../paysuccess']);
+    }
+
     commfun(){
       this.router.navigate(['../choosescreen/feed-commuter']);
     }

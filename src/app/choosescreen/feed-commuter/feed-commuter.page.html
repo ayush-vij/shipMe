@@ -328,7 +328,7 @@
                                                 <ion-avatar>
                                                     <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/d5a93f8831033.5602c8b6a30f4.jpg">
                                                 </ion-avatar>
-                                                <ion-label>{{post.id}}</ion-label>
+                                                <ion-label>{{post.name}}</ion-label>
                                             </ion-chip>
                                         </ion-card-header>
 
@@ -346,6 +346,12 @@
                                                 {{post.custype}}
                                             </p>
                                         </ion-card-content>
+
+                                        <ion-card class="statusbutton" (click)="pays()">
+                                            <ion-card-content>
+                                                <h5 class="ion-text-center btntext">ORDER STATUS</h5>
+                                            </ion-card-content>
+                                        </ion-card>
 
                                     </ion-card>
 

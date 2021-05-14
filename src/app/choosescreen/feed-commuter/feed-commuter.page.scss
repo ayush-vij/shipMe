@@ -1,13 +1,12 @@
 .header {
-  height: 4em;
-
+    height: 4em;
 }
 
 .header-heading {
-  font-size: 15px;
-  padding-left: 10px;
-  font-weight: bolder;
-  color: white;
+    font-size: 15px;
+    padding-left: 10px;
+    font-weight: bolder;
+    color: white;
 }
 
 #bookmark {
@@ -16,12 +15,12 @@
 }
 
 .locard {
-  background-color: rgb(214, 146, 20);
-  font-weight: bolder;
-  color: white;
-  width: 5em;
-  left: 7.5em;
-  bottom: 0.5em;
+    background-color: rgb(214, 146, 20);
+    font-weight: bolder;
+    color: white;
+    width: 5em;
+    left: 7.5em;
+    bottom: 0.5em;
 }
 
 #bookmark-btn {
@@ -40,6 +39,16 @@
 
 .purple {
     background-color: purple !important;
+}
+
+.statusbutton {
+    background-color: cyan;
+    color: black;
+    font-weight: bolder;
+}
+
+.btntext {
+    font-weight: bolder;
 }
 
 .invisibleText {
