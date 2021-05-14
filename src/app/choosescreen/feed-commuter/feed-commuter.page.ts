@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActionSheetController, AlertController } from '@ionic/angular';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { DataplayService } from '../dataplay.service';
 import { PostData } from '../dataplay.model';
 import { DatePipe } from '@angular/common';
@@ -19,7 +19,7 @@ import * as firebase from 'firebase';
   templateUrl: './feed-commuter.page.html',
   styleUrls: ['./feed-commuter.page.scss'],
 })
-export class FeedCommuterPage {
+export class FeedCommuterPage implements OnInit{
   postdata: PostData[];
   user: User[];
   saved: PostData[];
@@ -27,6 +27,8 @@ export class FeedCommuterPage {
   prefix:any;
   line:any;
   verifCode:any;
+  post: PostData
+  id: String;
 
   // ADDING SEARCH FILTER
   filterTerm: string;
@@ -35,14 +37,24 @@ export class FeedCommuterPage {
   constructor(
     // public windowService : WindowService,
     private alertController: AlertController, 
-    private router: Router, 
+    private router: Router,
+    private route: ActivatedRoute,
     private dataplayService: DataplayService,
     private actionSheetController: ActionSheetController,
-    private datePipe: DatePipe,
+    public datePipe: DatePipe,
     private authService: DAuthService,
     private http: HttpClient,
     private toastController: ToastController,
+    private DataplayService: DataplayService,
   ) { }
+
+
+  ngOnInit(){
+    this.id = this.route.snapshot.paramMap.get('id');
+    // console.log(this.id + " Janu sun zara");
+    this.post = this.DataplayService.getPostData(this.id);
+    console.log(this.post);
+  }
 
     doRefresh(event) {
       console.log('Refreshing..');
@@ -51,6 +63,10 @@ export class FeedCommuterPage {
         console.log('Refreshed! Data has been updated!');
         event.target.complete();
       }, 1000);
+    }
+    
+    aurji(){
+      this.router.navigate(['../../home']);
     }
 
     commfun(){

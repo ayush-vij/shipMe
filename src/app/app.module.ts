@@ -9,6 +9,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 import { SuperTabsModule} from "@ionic-super-tabs/angular"
 //import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
@@ -26,6 +28,7 @@ import { DAuthService } from './dauth.service';
 import { environment } from 'src/environments/environment';
 import * as firebase from 'firebase';
 import { Firebase  } from '@ionic-native/firebase';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 firebase.initializeApp({
   apiKey: "AIzaSyCRqbNvvvm-L3jfTHh8WmcJCbyneh7yHMo",
@@ -50,9 +53,10 @@ firebase.initializeApp({
     FormsModule,
     BrowserModule, 
     IonicModule.forRoot(), 
+    
     HttpClientModule, 
     AppRoutingModule, 
-    SuperTabsModule.forRoot()],
+    SuperTabsModule.forRoot(), ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [
     DAuthService,
     StatusBar,
@@ -62,7 +66,9 @@ firebase.initializeApp({
     DataplayService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
-  bootstrap: [AppComponent]
+  schemas:[
+CUSTOM_ELEMENTS_SCHEMA,
+  ],  bootstrap: [AppComponent]
 })
 export class AppModule {
 
